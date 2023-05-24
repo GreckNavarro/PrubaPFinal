@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12327b8116be760449e8737940be0919, type: 3}
   m_Name: Arma2
   m_EditorClassIdentifier: 
-  sprite1: {fileID: 21300000, guid: e92fc44f12c21dd44a49e390f39f7ffd, type: 3}
+  sprite1: {fileID: 21300000, guid: dccecec0ff6c8c045a5c09a4ffba89fb, type: 3}
   mensaje: Adios

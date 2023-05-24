@@ -11,27 +11,22 @@ public class PlayerControl : MonoBehaviour
     private float verticalInput;
     private Vector3 target;
     public Pilas.StackP<ArmaSO> armas;
-    private ArmaSO currentArma;
-    private Armas armaenmano;
+    [SerializeField] private ArmaSO currentArma;
+    [SerializeField] private Armas armaenmano;
 
-    void Awake()
+    private void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
         armas = new Pilas.StackP<ArmaSO>();
-
+        armas.Push(currentArma);
     }
-
-
     void Update()
     {
         MovementPlayer();
         Apuntar();
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            if (armas.Count() > 0)
-            {
-                currentArma.Shoot();
-            }
+            currentArma.Shoot();
 
         }
     }
@@ -39,15 +34,24 @@ public class PlayerControl : MonoBehaviour
     {
         armas.Push(armanueva);
         currentArma = armas.GetTop();
-        //armaenmano.SetSprite()
+        armaenmano.SetSprite(currentArma.GetSprite());
         Debug.Log("Sumando");
         Debug.Log(armas.Count());
         
     }
     public void Pop()
     {
-        armas.Pop();
-        currentArma = armas.GetTop();
+        if (armas.Count() > 0)
+        {
+            armas.Pop();
+            currentArma = armas.GetTop();
+            armaenmano.SetSprite(currentArma.GetSprite());
+        }
+        else if(armas.Count() == 0)
+        {
+            Debug.Log("Ya no se puede borrar papu");
+        }
+        Debug.Log(armas.Count());
     }
 
   

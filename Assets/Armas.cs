@@ -6,13 +6,13 @@ public class Armas : MonoBehaviour
 {
     private SpriteRenderer sp;
     private Sprite currentsprite;
-    private PlayerControl player;
-    private Pilas.StackP<ArmaSO> armas;
+    [SerializeField] private PlayerControl player;
 
     private void Start()
     {
         sp = GetComponent<SpriteRenderer>();
-
+        currentsprite = player.armas.GetTop().GetSprite();
+        sp.sprite = currentsprite;
     }
     public void SetSprite(Sprite sprite)
     {

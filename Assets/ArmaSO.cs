@@ -9,7 +9,10 @@ public class ArmaSO : ScriptableObject
     [SerializeField] Sprite sprite1;
     [SerializeField] string mensaje;
   
-
+    public Sprite GetSprite()
+    {
+        return sprite1;
+    }
     public void Shoot()
     {
         Debug.Log(mensaje);

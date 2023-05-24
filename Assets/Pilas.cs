@@ -55,6 +55,7 @@ public class Pilas
             {
                 Top = null;
                 Head = null;
+                count = 0;
             }
         }
         public T GetTop()
