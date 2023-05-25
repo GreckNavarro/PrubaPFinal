@@ -14,26 +14,50 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private ArmaSO currentArma;
     [SerializeField] private Armas armaenmano;
 
+
+
+    // Disparo
+
+   
+
+
+    public GameObject GetPositionArma()
+    {
+        return armaenmano.gameObject;
+    }
+
+
+
+    private void Awake()
+    {
+        currentArma.SetPlayer(this);
+    }
+
+
     private void Start()
     {
         myRB = GetComponent<Rigidbody2D>();
         armas = new Pilas.StackP<ArmaSO>();
         armas.Push(currentArma);
+
     }
     void Update()
     {
         MovementPlayer();
         Apuntar();
         if (Input.GetKeyDown(KeyCode.Space))
-        {
+        {       
+
             currentArma.Shoot();
 
         }
+        Debug.Log(target);
     }
     public void SetStack(ArmaSO armanueva)
     {
         armas.Push(armanueva);
         currentArma = armas.GetTop();
+        currentArma.SetPlayer(this);
         armaenmano.SetSprite(currentArma.GetSprite());
         Debug.Log("Sumando");
         Debug.Log(armas.Count());
@@ -45,6 +69,7 @@ public class PlayerControl : MonoBehaviour
         {
             armas.Pop();
             currentArma = armas.GetTop();
+            currentArma.SetPlayer(this);
             armaenmano.SetSprite(currentArma.GetSprite());
         }
         else if(armas.Count() == 0)
@@ -53,8 +78,12 @@ public class PlayerControl : MonoBehaviour
         }
         Debug.Log(armas.Count());
     }
-
-  
+    public Vector2 GetVector(Vector2 direccion)
+    {
+        Vector2 enviar = target - transform.position;
+        direccion = enviar;
+        return direccion;
+    }
 
 
 
@@ -75,8 +104,8 @@ public class PlayerControl : MonoBehaviour
         target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         float anguloRadianes = Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x);
-        float anguloGrados = (180 / Mathf.PI) * anguloRadianes - 90;
-        transform.rotation = Quaternion.Euler(0, 0, anguloGrados);
+        float angulosgrados = (180 / Mathf.PI) * anguloRadianes - 90;
+        transform.rotation = Quaternion.Euler(0, 0, angulosgrados);
 
     }
 }

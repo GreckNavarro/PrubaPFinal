@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Arma
   - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
