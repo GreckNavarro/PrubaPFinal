@@ -17,6 +17,7 @@ public class PlayerControl : MonoBehaviour
 
 
     // Disparo
+    private float angulosgrados;
 
    
 
@@ -51,7 +52,6 @@ public class PlayerControl : MonoBehaviour
             currentArma.Shoot();
 
         }
-        Debug.Log(target);
     }
     public void SetStack(ArmaSO armanueva)
     {
@@ -78,10 +78,9 @@ public class PlayerControl : MonoBehaviour
         }
         Debug.Log(armas.Count());
     }
-    public Vector2 GetVector(Vector2 direccion)
+    public Vector2 GetVector()
     {
-        Vector2 enviar = target - transform.position;
-        direccion = enviar;
+        Vector2 direccion = target - transform.position;
         return direccion;
     }
 
@@ -91,7 +90,7 @@ public class PlayerControl : MonoBehaviour
 
 
 
-    public void MovementPlayer()
+    private void MovementPlayer()
     {
         horizontalInput = Input.GetAxis("Horizontal");
         verticalInput = Input.GetAxis("Vertical");
@@ -99,13 +98,13 @@ public class PlayerControl : MonoBehaviour
         Vector2 Inputs = new Vector2(horizontalInput, verticalInput);
         myRB.velocity = Inputs * velocity;
     }
-    public void Apuntar()
+    private void Apuntar()
     {
         target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         float anguloRadianes = Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x);
-        float angulosgrados = (180 / Mathf.PI) * anguloRadianes - 90;
+        angulosgrados = (Mathf.Rad2Deg * anguloRadianes) - 90;
         transform.rotation = Quaternion.Euler(0, 0, angulosgrados);
-
+        Debug.Log(angulosgrados);
     }
 }

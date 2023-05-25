@@ -6,7 +6,7 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] int velocidad = 5;
     [SerializeField] PlayerControl player;
-    [SerializeField] Vector2 direccion;
+    [SerializeField] Vector2 angulo;
     [SerializeField] Rigidbody2D rb;
 
 
@@ -17,9 +17,8 @@ public class Bullet : MonoBehaviour
     public void SetPlayer(PlayerControl newplayer)
     {
         player = newplayer;
-        direccion = player.GetComponent<PlayerControl>().GetVector(direccion);
-        Debug.Log(direccion); 
-        rb.velocity = direccion * velocidad; 
-
+        angulo = player.GetComponent<PlayerControl>().GetVector();
+        Debug.Log("Angulo disparo: " + angulo);
+        rb.velocity = angulo * velocidad;
     }
 }
