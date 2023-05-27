@@ -19,7 +19,7 @@ public class PlayerControl : MonoBehaviour
     // Disparo
     private float angulosgrados;
 
-   
+
 
 
     public GameObject GetPositionArma()
@@ -47,7 +47,7 @@ public class PlayerControl : MonoBehaviour
         MovementPlayer();
         Apuntar();
         if (Input.GetKeyDown(KeyCode.Space))
-        {       
+        {
 
             currentArma.Shoot();
 
@@ -61,28 +61,24 @@ public class PlayerControl : MonoBehaviour
         armaenmano.SetSprite(currentArma.GetSprite());
         Debug.Log("Sumando");
         Debug.Log(armas.Count());
-        
+
     }
     public void Pop()
     {
         if (armas.Count() > 0)
         {
-            armas.Pop();
+            armas.Pop();    
             currentArma = armas.GetTop();
             currentArma.SetPlayer(this);
             armaenmano.SetSprite(currentArma.GetSprite());
         }
-        else if(armas.Count() == 0)
+        else if (armas.Count() == 0)
         {
             Debug.Log("Ya no se puede borrar papu");
         }
         Debug.Log(armas.Count());
     }
-    public Vector2 GetVector()
-    {
-        Vector2 direccion = target - transform.position;
-        return direccion;
-    }
+
 
 
 

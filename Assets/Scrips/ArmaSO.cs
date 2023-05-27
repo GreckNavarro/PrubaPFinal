@@ -8,6 +8,8 @@ public class ArmaSO : ScriptableObject
 {
     [SerializeField] Sprite sprite1;
     [SerializeField] string mensaje;
+    [SerializeField] int proyectiles;
+    [SerializeField] int tiempo;
     [SerializeField] GameObject prefabBullet;
     [SerializeField] GameObject player;
     private PlayerControl playerc;
@@ -22,7 +24,25 @@ public class ArmaSO : ScriptableObject
     }
     public void Shoot()
     {
-        GameObject bullet = Instantiate(prefabBullet, playerc.GetPositionArma().transform.position, playerc.GetPositionArma().transform.rotation);
-        bullet.GetComponent<Bullet>().SetPlayer(playerc);
+        if(proyectiles == 1)
+        {
+            GameObject bullet = Instantiate(prefabBullet, playerc.GetPositionArma().transform.position, playerc.GetPositionArma().transform.rotation);
+            bullet.GetComponent<Bullet>().SetArma(tiempo);
+        }
+        else if(proyectiles == 3)
+        {
+            GameObject bullet = Instantiate(prefabBullet, playerc.GetPositionArma().transform.position, playerc.GetPositionArma().transform.rotation);
+            bullet.GetComponent<Bullet>().SetArma(tiempo);
+            GameObject bullet1 = Instantiate(prefabBullet, playerc.GetPositionArma().transform.position, playerc.GetPositionArma().transform.rotation);
+            bullet1.GetComponent<Bullet>().SetArma(tiempo);
+            GameObject bullet2 = Instantiate(prefabBullet, playerc.GetPositionArma().transform.position, playerc.GetPositionArma().transform.rotation);
+            bullet2.GetComponent<Bullet>().SetArma(tiempo);
+
+            bullet1.transform.Rotate(0, 0, -15);
+            bullet2.transform.Rotate(0, 0, 15);
+
+        }
+
+
     }
 }

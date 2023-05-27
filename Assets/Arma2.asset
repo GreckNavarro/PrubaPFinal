@@ -14,5 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sprite1: {fileID: 21300000, guid: dccecec0ff6c8c045a5c09a4ffba89fb, type: 3}
   mensaje: Adios
+  proyectiles: 3
+  tiempo: 1
   prefabBullet: {fileID: 2343305464915812494, guid: 102f8131b5dab2944af6d8b4cea64b11, type: 3}
   player: {fileID: 0}

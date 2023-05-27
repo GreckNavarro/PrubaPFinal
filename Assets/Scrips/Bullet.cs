@@ -5,20 +5,22 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     [SerializeField] int velocidad = 5;
-    [SerializeField] PlayerControl player;
-    [SerializeField] Vector2 angulo;
-    [SerializeField] Rigidbody2D rb;
+    private int tiempodeduracion;
 
+    public void SetArma(int newtime)
+    {
+        tiempodeduracion = newtime;
+    }
 
-    private void OnEnable()
+    private void Start()
     {
-        rb = GetComponent<Rigidbody2D>();
+        Destroy(gameObject, tiempodeduracion);
     }
-    public void SetPlayer(PlayerControl newplayer)
+
+    private void Update()
     {
-        player = newplayer;
-        angulo = player.GetComponent<PlayerControl>().GetVector();
-        Debug.Log("Angulo disparo: " + angulo);
-        rb.velocity = angulo * velocidad;
+        transform.Translate(Vector2.up * velocidad * Time.deltaTime);
+
     }
+  
 }
