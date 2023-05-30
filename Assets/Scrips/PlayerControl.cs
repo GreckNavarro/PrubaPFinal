@@ -46,7 +46,7 @@ public class PlayerControl : MonoBehaviour
     {
         MovementPlayer();
         Apuntar();
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetMouseButtonDown(0))
         {
 
             currentArma.Shoot();
