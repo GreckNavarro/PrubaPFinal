@@ -12,10 +12,12 @@ public class GeneradorEnemigos : MonoBehaviour
     public int numeroEnemigos;
     public int Oleada = 1;
 
+    public bool jugar = true;
+
 
     private void Awake()
     {
-        
+
     }
     void Start()
     {
@@ -30,21 +32,41 @@ public class GeneradorEnemigos : MonoBehaviour
         spawners.AddNodeAtStart(p4);
 
         //prefabsEnemigos = new SimpleLinkList<GameObject>();
-        GenerarEnemigos(4);
+       StartCoroutine(GenerarEnemigos());
     }
 
     void Update()
     {
-        
+
     }
-    void GenerarEnemigos(int enemigos)
+
+ 
+    private void GenerarEnemigo()
     {
-        for (int i = 0; i < enemigos; i++)
+        for (int i = 0; i < 4; i++)
         {
             int randomposition = Random.Range(0, spawners.GetCount());
             Vector3 posicionaleatoria = spawners.GetNodeAtPosition(randomposition).transform.position;
-            GameObject enemie =  Instantiate(enemy, posicionaleatoria, enemy.transform.rotation);
+            GameObject enemie = Instantiate(enemy, posicionaleatoria, enemy.transform.rotation);
             enemie.GetComponent<ControladorEnemy>().SetPlayer(player);
+
         }
     }
+    private IEnumerator GenerarEnemigos()
+    {
+        Debug.Log("Hola");  
+      
+        for (int i = 0; i < 4; i++)
+        {
+            int randomposition = Random.Range(0, spawners.GetCount());
+            Vector3 posicionaleatoria = spawners.GetNodeAtPosition(randomposition).transform.position;
+            GameObject enemie = Instantiate(enemy, posicionaleatoria, enemy.transform.rotation);
+            enemie.GetComponent<ControladorEnemy>().SetPlayer(player);
+            
+        }
+        yield return new WaitForSeconds(2f);
+        StartCoroutine(GenerarEnemigos());
+
+    }
+
 }
