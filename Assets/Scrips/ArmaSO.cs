@@ -26,16 +26,16 @@ public class ArmaSO : ScriptableObject
     {
         if(proyectiles == 1)
         {
-            GameObject bullet = Instantiate(prefabBullet, playerc.GetPositionArma().transform.position, playerc.GetPositionArma().transform.rotation);
+            GameObject bullet = Instantiate(prefabBullet, playerc.GetPositionDisparador().transform.position, playerc.GetPositionDisparador().transform.rotation);
             bullet.GetComponent<Bullet>().SetArma(tiempo);
         }
         else if(proyectiles == 3)
         {
-            GameObject bullet = Instantiate(prefabBullet, playerc.GetPositionArma().transform.position, playerc.GetPositionArma().transform.rotation);
+            GameObject bullet = Instantiate(prefabBullet, playerc.GetPositionDisparador().transform.position, playerc.GetPositionDisparador().transform.rotation);
             bullet.GetComponent<Bullet>().SetArma(tiempo);
-            GameObject bullet1 = Instantiate(prefabBullet, playerc.GetPositionArma().transform.position, playerc.GetPositionArma().transform.rotation);
+            GameObject bullet1 = Instantiate(prefabBullet, playerc.GetPositionDisparador().transform.position, playerc.GetPositionDisparador().transform.rotation);
             bullet1.GetComponent<Bullet>().SetArma(tiempo);
-            GameObject bullet2 = Instantiate(prefabBullet, playerc.GetPositionArma().transform.position, playerc.GetPositionArma().transform.rotation);
+            GameObject bullet2 = Instantiate(prefabBullet, playerc.GetPositionDisparador().transform.position, playerc.GetPositionDisparador().transform.rotation);
             bullet2.GetComponent<Bullet>().SetArma(tiempo);
 
             bullet1.transform.Rotate(0, 0, -15);

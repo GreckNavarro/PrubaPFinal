@@ -32,6 +32,7 @@ public class Pilas
                 newNode.Previous = null;
                 Head = newNode;
                 Top = newNode;
+                count++;
                 return;
             }
             Top.Next = newNode;

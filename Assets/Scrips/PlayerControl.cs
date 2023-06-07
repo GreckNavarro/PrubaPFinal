@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
     public Pilas.StackP<ArmaSO> armas;
     [SerializeField] private ArmaSO currentArma;
     [SerializeField] private Armas armaenmano;
+    private Transform Disparador;
 
 
 
@@ -25,6 +26,11 @@ public class PlayerControl : MonoBehaviour
     public GameObject GetPositionArma()
     {
         return armaenmano.gameObject;
+    }
+    
+    public Transform GetPositionDisparador()
+    {
+        return Disparador;
     }
 
 
@@ -40,12 +46,15 @@ public class PlayerControl : MonoBehaviour
         myRB = GetComponent<Rigidbody2D>();
         armas = new Pilas.StackP<ArmaSO>();
         armas.Push(currentArma);
+        Debug.Log(armas.Count());
+        Disparador = transform.GetChild(0).GetChild(0);
 
     }
     void Update()
     {
         MovementPlayer();
         Apuntar();
+        
         if (Input.GetMouseButtonDown(0))
         {
 
@@ -65,14 +74,14 @@ public class PlayerControl : MonoBehaviour
     }
     public void Pop()
     {
-        if (armas.Count() > 0)
+        if (armas.Count() > 1)
         {
             armas.Pop();    
             currentArma = armas.GetTop();
             currentArma.SetPlayer(this);
             armaenmano.SetSprite(currentArma.GetSprite());
         }
-        else if (armas.Count() == 0)
+        else if (armas.Count() == 1)
         {
             Debug.Log("Ya no se puede borrar papu");
         }
@@ -101,6 +110,5 @@ public class PlayerControl : MonoBehaviour
         float anguloRadianes = Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x);
         angulosgrados = (Mathf.Rad2Deg * anguloRadianes) - 90;
         transform.rotation = Quaternion.Euler(0, 0, angulosgrados);
-        Debug.Log(angulosgrados);
     }
 }
