@@ -88,13 +88,6 @@ public class PlayerControl : MonoBehaviour
         Debug.Log(armas.Count());
     }
 
-
-
-
-
-
-
-
     private void MovementPlayer()
     {
         horizontalInput = Input.GetAxis("Horizontal");
