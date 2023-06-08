@@ -156,8 +156,8 @@ MonoBehaviour:
   lampara: {fileID: 6539747543549657817, guid: 0d91facd9cd8b874aba0ae3ee35dfe41, type: 3}
   player: {fileID: 579656550}
   numeroEnemigos: 0
-  numerospawn: 10
-  radio: 10
+  numerospawn: 20
+  radio: 5
   Oleada: 1
 --- !u!4 &205720147
 Transform:
