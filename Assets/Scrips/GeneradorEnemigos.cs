@@ -9,7 +9,7 @@ public class GeneradorEnemigos : MonoBehaviour
     [SerializeField] GameObject enemy;
     [SerializeField] GameObject lampara;
     [SerializeField] PlayerControl player;
-    public int numeroEnemigos;
+    public int numeroEnemigos = 1;
     public int numerospawn = 10;
     public float radio;
     public int Oleada = 1;
@@ -24,18 +24,9 @@ public class GeneradorEnemigos : MonoBehaviour
     {
         spawners = new SimpleLinkList<GameObject>();
 
-        /*GameObject p1 = Instantiate(lampara, (new Vector3(0, -10, 0)), transform.rotation);
-        spawners.AddNodeAtStart(p1);
-        GameObject p2 = Instantiate(lampara, (new Vector3(0, 10, 0)), transform.rotation);
-        spawners.AddNodeAtStart(p2);
-        GameObject p3 = Instantiate(lampara, (new Vector3(10, 0, 0)), transform.rotation);
-        spawners.AddNodeAtStart(p3);
-        GameObject p4 = Instantiate(lampara, (new Vector3(-10, 0, 0)), transform.rotation);
-        spawners.AddNodeAtStart(p4);*/
-
         GenerarSpawns();
-
-        // StartCoroutine(GenerarEnemigos());
+        StartCoroutine(GenerarEnemigos());
+        StartCoroutine(GenerarHordas());
     }
 
     void Update()
@@ -66,7 +57,7 @@ public class GeneradorEnemigos : MonoBehaviour
     {
 
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < numeroEnemigos; i++)
         {
             int randomposition = Random.Range(0, spawners.GetCount());
             Vector3 posicionaleatoria = spawners.GetNodeAtPosition(randomposition).transform.position;
@@ -77,6 +68,17 @@ public class GeneradorEnemigos : MonoBehaviour
         yield return new WaitForSeconds(2f);
         StartCoroutine(GenerarEnemigos());
 
+    }
+    private IEnumerator GenerarHordas()
+    {
+        for (int i = 0; i < spawners.GetCount(); i++)
+        {
+            Vector3 posicionspawn = spawners.GetNodeAtPosition(i).transform.position;
+            GameObject enemie = Instantiate(enemy, posicionspawn, enemy.transform.rotation);
+            enemie.GetComponent<ControladorEnemy>().SetPlayer(player);
+        }
+        yield return new WaitForSeconds(10f);
+        StartCoroutine (GenerarHordas());
     }
 
 

@@ -155,9 +155,9 @@ MonoBehaviour:
   enemy: {fileID: 1348390699559923934, guid: cd8a3d54c33cc4a4abea8b29f5844896, type: 3}
   lampara: {fileID: 6539747543549657817, guid: 0d91facd9cd8b874aba0ae3ee35dfe41, type: 3}
   player: {fileID: 579656550}
-  numeroEnemigos: 0
+  numeroEnemigos: 1
   numerospawn: 20
-  radio: 5
+  radio: 10
   Oleada: 1
 --- !u!4 &205720147
 Transform:
@@ -290,7 +290,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5fa349b47b4bc76488b25139031b0635, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocity: 5
+  velocity: 3
   currentArma: {fileID: 11400000, guid: c5defaa65ef523d41a0be8b4568fd1f6, type: 2}
   armaenmano: {fileID: 1370484675}
 --- !u!50 &579656551
