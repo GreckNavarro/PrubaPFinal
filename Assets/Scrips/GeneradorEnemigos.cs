@@ -40,14 +40,16 @@ public class GeneradorEnemigos : MonoBehaviour
         float anguloasumar = (360.0f / numerospawn);
 
 
-        Debug.Log(anguloasumar);
+        Vector3 centro = player.transform.position;
+
 
 
         for (int i = 0; i < numerospawn; i++)
         {
+            
             float currentangulo;
             currentangulo = (anguloasumar * i) * Mathf.Deg2Rad;
-            GameObject p1 = Instantiate(lampara, (new Vector3(Mathf.Cos(currentangulo) * radio, Mathf.Sin(currentangulo) * radio)), transform.rotation);
+            GameObject p1 = Instantiate(lampara, (new Vector3(centro.x + Mathf.Cos(currentangulo) * radio,centro.y + Mathf.Sin(currentangulo) * radio)), transform.rotation);
             spawners.AddNodeAtStart(p1);
         }
 
@@ -71,13 +73,23 @@ public class GeneradorEnemigos : MonoBehaviour
     }
     private IEnumerator GenerarHordas()
     {
+
+       /*for (int i = 0; i < spawners.GetCount(); i++)
+        {
+            GameObject posicionspawn = spawners.GetNodeAtPosition(i);
+            Vector3 desfase = posicionspawn.transform.position - player.transform.position;
+            Vector3 nuevaposicion = player.transform.position + desfase;
+            posicionspawn.transform.position = nuevaposicion;
+        }*/
+       
+   
         for (int i = 0; i < spawners.GetCount(); i++)
         {
             Vector3 posicionspawn = spawners.GetNodeAtPosition(i).transform.position;
             GameObject enemie = Instantiate(enemy, posicionspawn, enemy.transform.rotation);
             enemie.GetComponent<ControladorEnemy>().SetPlayer(player);
         }
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
         StartCoroutine (GenerarHordas());
     }
 

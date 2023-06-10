@@ -156,7 +156,7 @@ MonoBehaviour:
   lampara: {fileID: 6539747543549657817, guid: 0d91facd9cd8b874aba0ae3ee35dfe41, type: 3}
   player: {fileID: 579656550}
   numeroEnemigos: 1
-  numerospawn: 20
+  numerospawn: 10
   radio: 10
   Oleada: 1
 --- !u!4 &205720147
@@ -638,7 +638,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1587103374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.03, y: -0.11, z: 0}
+  m_LocalPosition: {x: -5, y: 0.000000007450581, z: 0}
   m_LocalScale: {x: 0.51387, y: 0.51387, z: 0.51387}
   m_ConstrainProportionsScale: 0
   m_Children: []
