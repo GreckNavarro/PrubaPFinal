@@ -7,13 +7,22 @@ public class ControladorEnemy : MonoBehaviour
     [SerializeField] PlayerControl player;
     [SerializeField] Rigidbody2D myRB2D;
     [SerializeField] int velocity;
+    [SerializeField] int vida;
+    GameObject particles;
 
 
     private float angulosgrados;
 
+
+    public void SetParticle(GameObject particlesblood)
+    {
+        particles = particlesblood;
+    }
+
     private void Start()
     {
         myRB2D = GetComponent<Rigidbody2D>();
+        vida = 1;
     }
     private void Update()
     {
@@ -42,7 +51,13 @@ public class ControladorEnemy : MonoBehaviour
         }
         else if(collision.gameObject.tag == "Bullet")
         {
-            Destroy(gameObject);
+            vida = vida - 1;
+            if(vida <= 0)
+            {
+                Destroy(gameObject);
+                GameObject particles1 = Instantiate(particles, transform.position, Quaternion.identity);
+                Destroy(particles1, 1f);
+            }
         }
     }
  

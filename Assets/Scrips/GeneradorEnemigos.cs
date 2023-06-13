@@ -12,7 +12,10 @@ public class GeneradorEnemigos : MonoBehaviour
     public int numeroEnemigos = 1;
     public int numerospawn = 10;
     public float radio;
-    public int Oleada = 1;
+    public int Oleada = 0;
+
+    [SerializeField] GameObject particlesBlood;
+    [SerializeField] float timeRespawn;
 
     private float anguloasumar;
 
@@ -67,6 +70,7 @@ public class GeneradorEnemigos : MonoBehaviour
             Vector3 posicionaleatoria = spawners.GetNodeAtPosition(randomposition).transform.position;
             GameObject enemie = Instantiate(enemy, posicionaleatoria, enemy.transform.rotation);
             enemie.GetComponent<ControladorEnemy>().SetPlayer(player);
+            enemie.GetComponent<ControladorEnemy>().SetParticle(particlesBlood);
 
         }
         yield return new WaitForSeconds(2f);
@@ -77,6 +81,7 @@ public class GeneradorEnemigos : MonoBehaviour
     {
 
         Vector3 centro = player.transform.position;
+        Oleada++;
         for (int i = 0; i < spawners.GetCount(); i++)
         {
             float currentangulo;
@@ -91,8 +96,9 @@ public class GeneradorEnemigos : MonoBehaviour
             Vector3 posicionspawn = spawners.GetNodeAtPosition(i).transform.position;
             GameObject enemie = Instantiate(enemy, posicionspawn, enemy.transform.rotation);
             enemie.GetComponent<ControladorEnemy>().SetPlayer(player);
+            enemie.GetComponent<ControladorEnemy>().SetParticle(particlesBlood);
         }
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(timeRespawn);
         StartCoroutine(GenerarHordas());
     }
 
