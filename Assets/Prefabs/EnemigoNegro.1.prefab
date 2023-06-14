@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2439239205909134424}
   - component: {fileID: -7761375569938607788}
   - component: {fileID: 5934942573406013588}
+  - component: {fileID: 1602181863867830185}
   m_Layer: 0
   m_Name: EnemigoNegro.1
   m_TagString: Enemy
@@ -150,3 +151,24 @@ MonoBehaviour:
   myRB2D: {fileID: 0}
   velocity: 1
   vida: 5
+--- !u!95 &1602181863867830185
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 878364445863725445}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 0b61095aa0f883c499a85b4795d82305, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0

@@ -33,10 +33,8 @@ public class GeneradorEnemigos : MonoBehaviour
 
         for (int i = 0; i < contenedor.GetComponent<ContenerEnemigos>().GetEnemies().Length; i++)
         {
-            enemies.AddNodeAtStart(contenedor.GetComponent<ContenerEnemigos>().GetEnemies()[0]);
-            enemies.AddNodeAtEnd(contenedor.GetComponent<ContenerEnemigos>().GetEnemies()[1]);
+            enemies.AddNodeAtEnd(contenedor.GetComponent<ContenerEnemigos>().GetEnemies()[i]);
         }
-
 
 
 

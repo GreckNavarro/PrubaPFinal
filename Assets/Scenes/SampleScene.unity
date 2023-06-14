@@ -154,7 +154,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lampara: {fileID: 6539747543549657817, guid: 0d91facd9cd8b874aba0ae3ee35dfe41, type: 3}
   player: {fileID: 579656550}
-  contenedor: {fileID: 1242689122}
+  contenedor: {fileID: 1242689124}
   numeroEnemigos: 1
   numerospawn: 10
   radio: 10
@@ -677,7 +677,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1242689123}
-  - component: {fileID: 1242689122}
+  - component: {fileID: 1242689124}
   m_Layer: 0
   m_Name: Enemigos
   m_TagString: Untagged
@@ -685,20 +685,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1242689122
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1242689121}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 20849c3bafd19034985d1cab626ba955, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemy1: {fileID: 1348390699559923934, guid: cd8a3d54c33cc4a4abea8b29f5844896, type: 3}
-  enemy2: {fileID: 878364445863725445, guid: be0fa4c7958ad7b4b851fdcd6061a57d, type: 3}
 --- !u!4 &1242689123
 Transform:
   m_ObjectHideFlags: 0
@@ -714,6 +700,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1242689124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1242689121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20849c3bafd19034985d1cab626ba955, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemy1: {fileID: 1348390699559923934, guid: cd8a3d54c33cc4a4abea8b29f5844896, type: 3}
+  enemy2: {fileID: 878364445863725445, guid: be0fa4c7958ad7b4b851fdcd6061a57d, type: 3}
 --- !u!1 &1370484673
 GameObject:
   m_ObjectHideFlags: 0
