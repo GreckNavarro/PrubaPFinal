@@ -9,6 +9,7 @@ public class ControladorEnemy : MonoBehaviour
     [SerializeField] int velocity;
     [SerializeField] int vida;
     GameObject particles;
+    int damage; 
 
 
     private float angulosgrados;
@@ -22,7 +23,6 @@ public class ControladorEnemy : MonoBehaviour
     private void Start()
     {
         myRB2D = GetComponent<Rigidbody2D>();
-        vida = 1;
     }
     private void Update()
     {
@@ -47,7 +47,7 @@ public class ControladorEnemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player.Pop();
-            Destroy(gameObject);
+            Destroy(gameObject); //Hacer que mi enemigo vaya para atrás
         }
         else if(collision.gameObject.tag == "Bullet")
         {

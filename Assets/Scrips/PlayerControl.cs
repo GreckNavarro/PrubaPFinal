@@ -40,6 +40,7 @@ public class PlayerControl : MonoBehaviour
         currentArma.SetPlayer(this);
     }
 
+    
 
     private void Start()
     {
@@ -103,5 +104,7 @@ public class PlayerControl : MonoBehaviour
         float anguloRadianes = Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x);
         angulosgrados = (Mathf.Rad2Deg * anguloRadianes) - 90;
         transform.rotation = Quaternion.Euler(0, 0, angulosgrados);
+
+
     }
 }
