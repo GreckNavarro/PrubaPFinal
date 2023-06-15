@@ -31,6 +31,17 @@ public class ControladorEnemy : MonoBehaviour
 
     }
 
+    public void RecibirDaño(int damage)
+    {
+        vida -= damage;
+        if (vida <= 0)
+        {
+            Destroy(gameObject);
+            GameObject particles1 = Instantiate(particles, transform.position, Quaternion.identity);
+            Destroy(particles1, 1f);
+        }
+    }
+
     private void Mirar()
     {
         float anguloRadianes = Mathf.Atan2(player.transform.position.y - transform.position.y, player.transform.position.x - transform.position.x);
@@ -48,16 +59,6 @@ public class ControladorEnemy : MonoBehaviour
         {
             player.Pop();
             Destroy(gameObject); //Hacer que mi enemigo vaya para atrás
-        }
-        else if(collision.gameObject.tag == "Bullet")
-        {
-            vida = vida - 1;
-            if(vida <= 0)
-            {
-                Destroy(gameObject);
-                GameObject particles1 = Instantiate(particles, transform.position, Quaternion.identity);
-                Destroy(particles1, 1f);
-            }
         }
     }
  

@@ -6,6 +6,12 @@ public class Bullet : MonoBehaviour
 {
     [SerializeField] int velocidad = 5;
     private int tiempodeduracion;
+    private int damage;
+
+    public void SetDamage(int damage)
+    {
+        this.damage = damage;
+    }
 
     public void SetArma(int newtime)
     {
@@ -27,6 +33,7 @@ public class Bullet : MonoBehaviour
         if(collision.gameObject.tag == "Enemy")
         {
             Destroy(gameObject);
+            collision.GetComponent<ControladorEnemy>().RecibirDaño(damage);
         }
     }
 
