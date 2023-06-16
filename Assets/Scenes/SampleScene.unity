@@ -714,6 +714,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemy1: {fileID: 1348390699559923934, guid: cd8a3d54c33cc4a4abea8b29f5844896, type: 3}
   enemy2: {fileID: 878364445863725445, guid: be0fa4c7958ad7b4b851fdcd6061a57d, type: 3}
+  enemy3: {fileID: 7775768935394003386, guid: b7ab4b6d4deee714f9e3c1e8422a7630, type: 3}
 --- !u!1 &1370484673
 GameObject:
   m_ObjectHideFlags: 0
