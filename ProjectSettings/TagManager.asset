@@ -7,6 +7,9 @@ TagManager:
   - Arma
   - Enemy
   - Bullet
+  - Boss
+  - Nodo
+  - NodoCentral
   layers:
   - Default
   - TransparentFX
