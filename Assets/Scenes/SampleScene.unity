@@ -1583,6 +1583,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 579656549}
   texto: {fileID: 2129598209}
+  puntaje: 0
 --- !u!4 &1948372529
 Transform:
   m_ObjectHideFlags: 0

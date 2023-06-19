@@ -60,6 +60,8 @@ public class GrafoControl : MonoBehaviour
     {
         NodeControl NodeSelected = SearchNode(nodeTag);
 
+
+
         for(int i = 0; i < allAdyacentes.Length; i++)
         {
             NodeSelected.AddNodeAdjacente(SearchNode(allAdyacentes[i]));
@@ -70,6 +72,7 @@ public class GrafoControl : MonoBehaviour
     NodeControl SearchNode(string tag)
     {
         int position = 0;
+
         for (int i = 0; i < allNodesControl.GetCount(); i++)
         {
             if (allNodesControl.GetNodeAtPosition(i).Tag == tag)

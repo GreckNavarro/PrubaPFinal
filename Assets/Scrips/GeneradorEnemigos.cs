@@ -18,15 +18,13 @@ public class GeneradorEnemigos : MonoBehaviour
     [SerializeField] GameObject particlesBlood;
     [SerializeField] float timeRespawn;
     [SerializeField] ScoreManager score;
+    GameObject enemigoactual;
 
     private float anguloasumar;
+    private int comparador = 1500;
 
 
 
-    private void Awake()
-    {
-
-    }
     void Start()
     {
         spawners = new SimpleLinkList<GameObject>();
@@ -37,6 +35,7 @@ public class GeneradorEnemigos : MonoBehaviour
             enemies.AddNodeAtEnd(contenedor.GetComponent<ContenerEnemigos>().GetEnemies()[i]);
         }
 
+        enemigoactual = enemies.GetNodeAtStart();
 
 
 
@@ -45,10 +44,8 @@ public class GeneradorEnemigos : MonoBehaviour
         StartCoroutine(GenerarHordas());
     }
 
-    void Update()
-    {
-
-    }
+ 
+  
 
 
     private void GenerarSpawns()
@@ -79,11 +76,16 @@ public class GeneradorEnemigos : MonoBehaviour
         {
             int randomposition = Random.Range(0, spawners.GetCount());
             Vector3 posicionaleatoria = spawners.GetNodeAtPosition(randomposition).transform.position;
-            GameObject enemie = Instantiate(enemies.GetNodeAtEnd(), posicionaleatoria, enemies.GetNodeAtEnd().transform.rotation);
+            GameObject enemie = Instantiate(enemigoactual, posicionaleatoria, enemigoactual.transform.rotation);
             enemie.GetComponent<ControladorEnemy>().SetPlayer(player);
             enemie.GetComponent<ControladorEnemy>().SetParticle(particlesBlood);
             enemie.GetComponent<ControladorEnemy>().onEnemyDestroy += score.HandleEnemyDestroy;
 
+        }
+
+        if(score.puntaje >= comparador)
+        {
+            
         }
         yield return new WaitForSeconds(2f);
         StartCoroutine(GenerarEnemigos());
@@ -106,7 +108,7 @@ public class GeneradorEnemigos : MonoBehaviour
         for (int i = 0; i < spawners.GetCount(); i++)
         {
             Vector3 posicionspawn = spawners.GetNodeAtPosition(i).transform.position;
-            GameObject enemie = Instantiate(enemies.GetNodeAtStart(), posicionspawn, enemies.GetNodeAtStart().transform.rotation);
+            GameObject enemie = Instantiate(enemigoactual, posicionspawn, enemigoactual.transform.rotation);
             enemie.GetComponent<ControladorEnemy>().SetPlayer(player);
             enemie.GetComponent<ControladorEnemy>().SetParticle(particlesBlood);
             enemie.GetComponent<ControladorEnemy>().onEnemyDestroy += score.HandleEnemyDestroy;

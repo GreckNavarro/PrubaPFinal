@@ -15,7 +15,7 @@ public class ScoreManager : MonoBehaviour
     public event Action InvokeBoss;
 
 
-    private int puntaje = 0;
+    public int puntaje = 0;
 
 
 
