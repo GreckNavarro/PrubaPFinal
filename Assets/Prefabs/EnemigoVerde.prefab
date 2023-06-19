@@ -151,6 +151,7 @@ MonoBehaviour:
   myRB2D: {fileID: 0}
   velocity: 7
   vida: 1
+  puntaje: 10
 --- !u!95 &-7481489139910286288
 Animator:
   serializedVersion: 5

@@ -2,15 +2,31 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class BossController : MonoBehaviour
 {
     private Vector2 VectorToMove;
     [SerializeField] int speed;
+    [SerializeField] private int vida;
+    [SerializeField] private GameObject padre;
+    [SerializeField] ScoreManager score;
 
-
-
-  
-
+    private void Awake()
+    {
+        score.InvokeBoss += HandleBoss;
+    }
+    private void Start()
+    {
+        padre.SetActive(false);
+    }
+    public void HandleBoss()
+    {
+        padre.SetActive(true);
+    }
+    private void OnEnable()
+    {
+        vida = 100;
+    }
 
 
     private void Update()
@@ -23,4 +39,14 @@ public class BossController : MonoBehaviour
     {
         VectorToMove = destiny;
     }
+
+    public void RecibirDaño(int damage)
+    {
+        vida -= damage;
+        if(vida <= 0)
+        {
+            padre.SetActive(false);
+        }
+    }
+
 }

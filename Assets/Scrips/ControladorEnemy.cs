@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using System;
 
 public class ControladorEnemy : MonoBehaviour
 {
@@ -9,7 +11,15 @@ public class ControladorEnemy : MonoBehaviour
     [SerializeField] int velocity;
     [SerializeField] int vida;
     GameObject particles;
-    int damage; 
+    int damage;
+    [SerializeField] int puntaje;
+
+
+    public event Action<int> onEnemyDestroy;
+
+
+
+
 
 
     private float angulosgrados;
@@ -37,6 +47,7 @@ public class ControladorEnemy : MonoBehaviour
         if (vida <= 0)
         {
             Destroy(gameObject);
+            onEnemyDestroy?.Invoke(puntaje);
             GameObject particles1 = Instantiate(particles, transform.position, Quaternion.identity);
             Destroy(particles1, 1f);
         }

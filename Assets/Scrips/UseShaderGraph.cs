@@ -20,6 +20,9 @@ public class UseShaderGraph : MonoBehaviour
     }
     private void OnTriggerExit2D(Collider2D collision)
     {
-        materialQuad.SetTexture("_Texture", textures[2]);
+        if (collision.gameObject.tag == "Player")
+        {
+            materialQuad.SetTexture("_Texture", textures[2]);
+        }
     }
 }

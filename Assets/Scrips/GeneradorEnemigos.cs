@@ -17,6 +17,7 @@ public class GeneradorEnemigos : MonoBehaviour
 
     [SerializeField] GameObject particlesBlood;
     [SerializeField] float timeRespawn;
+    [SerializeField] ScoreManager score;
 
     private float anguloasumar;
 
@@ -81,6 +82,7 @@ public class GeneradorEnemigos : MonoBehaviour
             GameObject enemie = Instantiate(enemies.GetNodeAtEnd(), posicionaleatoria, enemies.GetNodeAtEnd().transform.rotation);
             enemie.GetComponent<ControladorEnemy>().SetPlayer(player);
             enemie.GetComponent<ControladorEnemy>().SetParticle(particlesBlood);
+            enemie.GetComponent<ControladorEnemy>().onEnemyDestroy += score.HandleEnemyDestroy;
 
         }
         yield return new WaitForSeconds(2f);
@@ -107,6 +109,7 @@ public class GeneradorEnemigos : MonoBehaviour
             GameObject enemie = Instantiate(enemies.GetNodeAtStart(), posicionspawn, enemies.GetNodeAtStart().transform.rotation);
             enemie.GetComponent<ControladorEnemy>().SetPlayer(player);
             enemie.GetComponent<ControladorEnemy>().SetParticle(particlesBlood);
+            enemie.GetComponent<ControladorEnemy>().onEnemyDestroy += score.HandleEnemyDestroy;
         }
         yield return new WaitForSeconds(timeRespawn);
         StartCoroutine(GenerarHordas());
