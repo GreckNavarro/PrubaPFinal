@@ -18,10 +18,12 @@ public class BossController : MonoBehaviour
     private void Start()
     {
         padre.SetActive(false);
+        score.SetBool(false);
     }
     public void HandleBoss()
     {
         padre.SetActive(true);
+        score.SetBool(true);
     }
     private void OnEnable()
     {
@@ -46,6 +48,7 @@ public class BossController : MonoBehaviour
         if(vida <= 0)
         {
             padre.SetActive(false);
+            score.SetBool(false);
         }
     }
 

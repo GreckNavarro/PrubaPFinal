@@ -12,17 +12,19 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] TMP_Text texto;
     int maximos = 0;
 
+    bool bossactived;
+
     public event Action InvokeBoss;
 
 
     public int puntaje = 0;
 
 
-
-    void Start()
+    public void SetBool(bool actived)
     {
-        
+        bossactived = actived;
     }
+    
 
     // Update is called once per frame
     void Update()
@@ -41,8 +43,11 @@ public class ScoreManager : MonoBehaviour
     public void HandleEnemyDestroy(int bonuspuntaje)
     {
         puntaje += bonuspuntaje;
-        maximos += bonuspuntaje;
-        InvocarBoss();
+        if (bossactived == false)
+        {
+            maximos += bonuspuntaje;
+            InvocarBoss();
+        }
 
     }
     public void InvocarBoss()
