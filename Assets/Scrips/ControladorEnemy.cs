@@ -24,6 +24,10 @@ public class ControladorEnemy : MonoBehaviour
 
     private float angulosgrados;
 
+    public void SetLayer(int number)
+    {
+        this.gameObject.layer = number;
+    }
 
     public void SetParticle(GameObject particlesblood)
     {

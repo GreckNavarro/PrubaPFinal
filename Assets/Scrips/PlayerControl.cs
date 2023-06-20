@@ -14,6 +14,10 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private ArmaSO currentArma;
     [SerializeField] private Armas armaenmano;
     private Transform Disparador;
+    [SerializeField] LineRenderer linerender;
+    private int proyectil;
+    Vector2 direccion;
+    private int distance = 10;
 
 
 
@@ -21,8 +25,11 @@ public class PlayerControl : MonoBehaviour
     private float angulosgrados;
 
 
-
-
+    public Vector2 DireccionShot()
+    {
+        direccion = target - transform.position;
+        return direccion;
+    }
     public GameObject GetPositionArma()
     {
         return armaenmano.gameObject;
@@ -60,6 +67,10 @@ public class PlayerControl : MonoBehaviour
         {
 
             currentArma.Shoot();
+            if(currentArma.GetProyectil() == 0)
+            {
+                StartCoroutine(ShootLaser());
+            }
 
         }
     }
@@ -106,5 +117,16 @@ public class PlayerControl : MonoBehaviour
         transform.rotation = Quaternion.Euler(0, 0, angulosgrados);
 
 
+    }
+
+
+    IEnumerator ShootLaser()
+    {
+
+        Vector3 endposition = ((Vector3)direccion * distance) + Disparador.position;
+        linerender.positionCount = 2;
+        linerender.SetPositions(new Vector3[] { Disparador.position, endposition});
+        yield return new WaitForSeconds(0.25f);
+        linerender.positionCount = 0;
     }
 }

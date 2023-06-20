@@ -17,5 +17,5 @@ MonoBehaviour:
   proyectiles: 0
   tiempo: 3
   prefabBullet: {fileID: 6222269118111488241, guid: a8205c17389abfc4c857b17ece5c833e, type: 3}
-  damage: 5
+  damage: 10
   player: {fileID: 0}

@@ -13,12 +13,12 @@ public class GeneradorEnemigos : MonoBehaviour
     public int numeroEnemigos = 1;
     public int numerospawn = 10;
     public float radio;
-    public int Oleada = 0;
 
     [SerializeField] GameObject particlesBlood;
     [SerializeField] float timeRespawn;
     [SerializeField] ScoreManager score;
     GameObject enemigoactual;
+  
 
     private float anguloasumar;
     private int comparador = 1500;
@@ -30,9 +30,9 @@ public class GeneradorEnemigos : MonoBehaviour
         spawners = new SimpleLinkList<GameObject>();
         enemies = new SimpleLinkList<GameObject>();
 
-        for (int i = 0; i < contenedor.GetComponent<ContenerEnemigos>().GetEnemies().Length; i++)
+        for (int i = 0; i < contenedor.GetEnemies().Length; i++)
         {
-            enemies.AddNodeAtEnd(contenedor.GetComponent<ContenerEnemigos>().GetEnemies()[i]);
+            enemies.AddNodeAtEnd(contenedor.GetEnemies()[i]);
         }
 
         enemigoactual = enemies.GetNodeAtStart();
@@ -95,7 +95,6 @@ public class GeneradorEnemigos : MonoBehaviour
     {
 
         Vector3 centro = player.transform.position;
-        Oleada++;
         for (int i = 0; i < spawners.GetCount(); i++)
         {
             float currentangulo;

@@ -29,8 +29,6 @@ public class ScoreManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(puntaje);
-        Debug.Log(maximos);
     }
 
     private void OnGUI()
@@ -52,7 +50,7 @@ public class ScoreManager : MonoBehaviour
     }
     public void InvocarBoss()
     {
-        if (maximos >= 100)
+        if (maximos >= 1500)
         {
             InvokeBoss?.Invoke();
             maximos = 0;

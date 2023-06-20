@@ -15,7 +15,13 @@ public class ArmaSO : ScriptableObject
     [SerializeField] GameObject player;
     private PlayerControl playerc;
     private float distance = 10;
-  
+    private LineRenderer line;
+
+
+    public int GetProyectil()
+    {
+        return proyectiles;
+    }
     public void SetPlayer(PlayerControl playere)
     {
         playerc = playere.GetComponent<PlayerControl>();
@@ -26,14 +32,14 @@ public class ArmaSO : ScriptableObject
     }
     public void Shoot()
     {
-        if(proyectiles == 1)
+        if (proyectiles == 1)
         {
             GameObject bullet = Instantiate(prefabBullet, playerc.GetPositionDisparador().transform.position, playerc.GetPositionDisparador().transform.rotation);
             bullet.GetComponent<Bullet>().SetArma(tiempo);
             bullet.GetComponent<Bullet>().SetDamage(damage);
 
         }
-        else if(proyectiles == 3)
+        else if (proyectiles == 3)
         {
             GameObject bullet = Instantiate(prefabBullet, playerc.GetPositionDisparador().transform.position, playerc.GetPositionDisparador().transform.rotation);
             bullet.GetComponent<Bullet>().SetArma(tiempo);
@@ -48,15 +54,24 @@ public class ArmaSO : ScriptableObject
             bullet1.transform.Rotate(0, 0, -15);
             bullet2.transform.Rotate(0, 0, 15);
         }
-        else if(proyectiles == 0)
+        else if (proyectiles == 0)
         {
-            RaycastHit2D raycast = Physics2D.Raycast(playerc.GetPositionDisparador().transform.position, Vector2.up, distance);
-            Debug.DrawRay(playerc.GetPositionDisparador().transform.position, Vector2.up * distance, Color.red);
 
-            
+
+            Vector2 direccion = playerc.DireccionShot();
+            RaycastHit2D[] raycast = Physics2D.RaycastAll(playerc.GetPositionDisparador().transform.position, direccion, distance);
+            Debug.DrawRay(playerc.GetPositionDisparador().transform.position, direccion * distance, Color.red);
+
+            for (int i = 0; i < raycast.Length; i++)
+            {
+                if (raycast[i].collider.gameObject.tag == "Enemy")
+                {
+                    raycast[i].collider.gameObject.GetComponent<ControladorEnemy>().RecibirDaño(damage);
+                    raycast[i].collider.gameObject.GetComponent<ControladorEnemy>().SetLayer(0);
+                }
+            }
+
         }
-
-
 
     }
 }
