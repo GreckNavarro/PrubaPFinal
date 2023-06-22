@@ -18,10 +18,11 @@ public class GeneradorEnemigos : MonoBehaviour
     [SerializeField] float timeRespawn;
     [SerializeField] ScoreManager score;
     GameObject enemigoactual;
-  
+    private int indicador = 0;
+
 
     private float anguloasumar;
-    private int comparador = 1500;
+    private int comparador = 300;
 
 
 
@@ -44,8 +45,8 @@ public class GeneradorEnemigos : MonoBehaviour
         StartCoroutine(GenerarHordas());
     }
 
- 
-  
+
+
 
 
     private void GenerarSpawns()
@@ -83,10 +84,7 @@ public class GeneradorEnemigos : MonoBehaviour
 
         }
 
-        if(score.puntaje >= comparador)
-        {
-            
-        }
+
         yield return new WaitForSeconds(2f);
         StartCoroutine(GenerarEnemigos());
 
@@ -116,5 +114,13 @@ public class GeneradorEnemigos : MonoBehaviour
         StartCoroutine(GenerarHordas());
     }
 
+    private void ChangeEnemy()
+    {
+        if (score.puntaje >= comparador)
+        {
+            indicador++;
+            enemigoactual = enemies.GetNodeAtPosition(indicador);
+        }
+    }
 
 }

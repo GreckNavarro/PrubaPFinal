@@ -15,8 +15,6 @@ public class ArmaSO : ScriptableObject
     [SerializeField] GameObject player;
     private PlayerControl playerc;
     private float distance = 10;
-    private LineRenderer line;
-
 
     public int GetProyectil()
     {
@@ -56,7 +54,6 @@ public class ArmaSO : ScriptableObject
         }
         else if (proyectiles == 0)
         {
-
 
             Vector2 direccion = playerc.DireccionShot();
             RaycastHit2D[] raycast = Physics2D.RaycastAll(playerc.GetPositionDisparador().transform.position, direccion, distance);

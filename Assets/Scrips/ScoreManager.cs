@@ -50,10 +50,12 @@ public class ScoreManager : MonoBehaviour
     }
     public void InvocarBoss()
     {
-        if (maximos >= 1500)
+        if (maximos >= 200)
         {
             InvokeBoss?.Invoke();
+            Debug.Log(maximos);
             maximos = 0;
+
         }
     }
 }

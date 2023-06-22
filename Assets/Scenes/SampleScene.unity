@@ -343,6 +343,8 @@ MonoBehaviour:
   vida: 0
   padre: {fileID: 1383898983}
   score: {fileID: 1948372528}
+  prefabsSpores: {fileID: 206318517864454613, guid: f65c50e230eb90f4b9969f1bf9ababac, type: 3}
+  cantidadspores: 10
 --- !u!212 &325437473
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1310,7 +1312,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1383898984
 Transform:
   m_ObjectHideFlags: 0

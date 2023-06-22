@@ -18,6 +18,7 @@ public class PlayerControl : MonoBehaviour
     private int proyectil;
     Vector2 direccion;
     private int distance = 10;
+    private bool dispararRayo;
 
 
 
@@ -45,6 +46,7 @@ public class PlayerControl : MonoBehaviour
     private void Awake()
     {
         currentArma.SetPlayer(this);
+        dispararRayo = true;
     }
 
     
@@ -66,10 +68,18 @@ public class PlayerControl : MonoBehaviour
         if (Input.GetMouseButtonDown(0))
         {
 
-            currentArma.Shoot();
+          
             if(currentArma.GetProyectil() == 0)
             {
-                StartCoroutine(ShootLaser());
+                if(dispararRayo == true)
+                {
+                    currentArma.Shoot();
+                    StartCoroutine(ShootLaser());
+                }
+            }
+            else
+            {
+                currentArma.Shoot();
             }
 
         }
@@ -122,11 +132,13 @@ public class PlayerControl : MonoBehaviour
 
     IEnumerator ShootLaser()
     {
-
+        dispararRayo = false;
         Vector3 endposition = ((Vector3)direccion * distance) + Disparador.position;
         linerender.positionCount = 2;
         linerender.SetPositions(new Vector3[] { Disparador.position, endposition});
         yield return new WaitForSeconds(0.25f);
         linerender.positionCount = 0;
+        yield return new WaitForSeconds(1);
+        dispararRayo = true;
     }
 }

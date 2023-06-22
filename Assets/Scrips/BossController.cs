@@ -10,14 +10,17 @@ public class BossController : MonoBehaviour
     [SerializeField] private int vida;
     [SerializeField] private GameObject padre;
     [SerializeField] ScoreManager score;
+    [SerializeField] GameObject prefabsSpores;
+    [SerializeField] float cantidadspores = 10;
+    private float disparo = 0;
 
     private void Awake()
     {
+        padre.SetActive(false);
         score.InvokeBoss += HandleBoss;
     }
     private void Start()
     {
-        padre.SetActive(false);
         score.SetBool(false);
     }
     public void HandleBoss()
@@ -28,6 +31,7 @@ public class BossController : MonoBehaviour
     private void OnEnable()
     {
         vida = 100;
+        StartCoroutine(CanalizarAtaque());
     }
 
 
@@ -50,6 +54,26 @@ public class BossController : MonoBehaviour
             padre.SetActive(false);
             score.SetBool(false);
         }
+    }
+
+    IEnumerator CanalizarAtaque()
+    {
+        if(disparo == 0)
+        {
+            float anguloasumar = 360 / cantidadspores;
+            Debug.Log("disparando");
+            for (int i = 0; i < cantidadspores; i++)
+            {
+                float currentangulo;
+                currentangulo = (anguloasumar * i) * Mathf.Deg2Rad;
+                GameObject bullet = Instantiate(prefabsSpores, new Vector3(transform.position.x + Mathf.Cos(currentangulo), transform.position.y + Mathf.Sin(currentangulo)), prefabsSpores.transform.rotation);
+                bullet.GetComponent<BulletEnemy>().ChangeVelocity(currentangulo);
+
+
+            }
+        }
+        yield return new WaitForSeconds(1);
+        StartCoroutine(CanalizarAtaque());
     }
 
 }

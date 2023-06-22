@@ -50,7 +50,7 @@ public class GrafoControl : MonoBehaviour
 
             float currentangulo;
             currentangulo = (anguloasumar * i) * Mathf.Deg2Rad;
-            GameObject p1 = Instantiate(Node, new Vector3(centro.x + Mathf.Cos(currentangulo) * radio, centro.y + Mathf.Sin(currentangulo) * radio), transform.rotation);
+            GameObject p1 = Instantiate(Node, new Vector3(centro.x + Mathf.Cos(currentangulo) * radio, centro.y + Mathf.Sin(currentangulo) * radio), transform.rotation, transform.parent);
             p1.GetComponent<NodeControl>().SetTag(i.ToString());
             allNodesControl.AddNodeAtEnd(p1.GetComponent<NodeControl>());
         }
