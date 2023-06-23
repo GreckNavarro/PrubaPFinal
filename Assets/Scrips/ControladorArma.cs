@@ -7,6 +7,10 @@ public class ControladorArma : MonoBehaviour
     [SerializeField] ArmaSO arma;
     [SerializeField] PlayerControl player;
 
+    public void SetPlayer(PlayerControl newplayer)
+    {
+        player = newplayer;
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if(collision.gameObject.tag == "Player")

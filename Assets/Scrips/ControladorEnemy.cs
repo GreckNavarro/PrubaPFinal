@@ -11,7 +11,7 @@ public class ControladorEnemy : MonoBehaviour
     [SerializeField] int velocity;
     [SerializeField] int vida;
     GameObject particles;
-    int damage;
+    [SerializeField] int damage;
     [SerializeField] int puntaje;
 
 
@@ -33,7 +33,10 @@ public class ControladorEnemy : MonoBehaviour
     {
         particles = particlesblood;
     }
-
+    public int GetDamage()
+    {
+        return damage;
+    }
     private void Start()
     {
         myRB2D = GetComponent<Rigidbody2D>();

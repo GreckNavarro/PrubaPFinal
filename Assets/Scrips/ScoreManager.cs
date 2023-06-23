@@ -10,6 +10,7 @@ public class ScoreManager : MonoBehaviour
     private int vida;
     PlayerControl playerController;
     [SerializeField] TMP_Text texto;
+    [SerializeField] TMP_Text live;
     int maximos = 0;
 
     bool bossactived;
@@ -24,18 +25,24 @@ public class ScoreManager : MonoBehaviour
     {
         bossactived = actived;
     }
-    
 
-    // Update is called once per frame
-    void Update()
+
+    private void Awake()
     {
+        vida = 100;
+        playerController = player.GetComponent<PlayerControl>();
     }
 
     private void OnGUI()
     {
         texto.text = "Score: " + puntaje;
+        live.text = "Vida: " + vida;
     }
 
+    private void Start()
+    {
+        playerController.onPlayerDamaged += HandlePlayerDamaged;
+    }
 
 
     public void HandleEnemyDestroy(int bonuspuntaje)
@@ -48,9 +55,18 @@ public class ScoreManager : MonoBehaviour
         }
 
     }
+
+    private void HandlePlayerDamaged(int damage)
+    {
+        vida -= damage;
+
+    }
+
+
+
     public void InvocarBoss()
     {
-        if (maximos >= 200)
+        if (maximos >= 1000)
         {
             InvokeBoss?.Invoke();
             Debug.Log(maximos);

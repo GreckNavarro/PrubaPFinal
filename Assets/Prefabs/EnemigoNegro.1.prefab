@@ -151,6 +151,7 @@ MonoBehaviour:
   myRB2D: {fileID: 0}
   velocity: 2
   vida: 5
+  damage: 5
   puntaje: 7
 --- !u!95 &1602181863867830185
 Animator:

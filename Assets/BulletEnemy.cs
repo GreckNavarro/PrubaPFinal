@@ -6,7 +6,7 @@ public class BulletEnemy : MonoBehaviour
 {
     [SerializeField] int velocidad = 5;
     private int tiempodeduracion = 8;
-    private int damage;
+    private int damage = 5;
     [SerializeField]private Rigidbody2D rb;
 
     private void OnEnable()
@@ -18,6 +18,10 @@ public class BulletEnemy : MonoBehaviour
         Destroy(gameObject, tiempodeduracion);
 
     }
+    public int GetDamage()
+    {
+        return damage;
+    }
 
 
     public void ChangeVelocity(float angulo)
@@ -25,9 +29,4 @@ public class BulletEnemy : MonoBehaviour
         rb.velocity = new Vector2(velocidad * Mathf.Cos(angulo), velocidad * Mathf.Sin(angulo));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

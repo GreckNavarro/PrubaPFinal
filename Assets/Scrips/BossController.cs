@@ -13,6 +13,9 @@ public class BossController : MonoBehaviour
     [SerializeField] GameObject prefabsSpores;
     [SerializeField] float cantidadspores = 10;
     private float disparo = 0;
+    [SerializeField] GameObject particles;
+
+    private int damage = 10;
 
     private void Awake()
     {
@@ -23,6 +26,11 @@ public class BossController : MonoBehaviour
     {
         score.SetBool(false);
     }
+
+    public int GetDamage()
+    {
+        return damage;
+    }
     public void HandleBoss()
     {
         padre.SetActive(true);
@@ -30,7 +38,7 @@ public class BossController : MonoBehaviour
     }
     private void OnEnable()
     {
-        vida = 100;
+        vida = 50;
         StartCoroutine(CanalizarAtaque());
     }
 
@@ -49,7 +57,9 @@ public class BossController : MonoBehaviour
     public void RecibirDaño(int damage)
     {
         vida -= damage;
-        if(vida <= 0)
+        GameObject particles1 = Instantiate(particles, transform.position, Quaternion.identity);
+        Destroy(particles1, 1f);
+        if (vida <= 0)
         {
             padre.SetActive(false);
             score.SetBool(false);

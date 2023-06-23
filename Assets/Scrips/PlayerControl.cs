@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 public class PlayerControl : MonoBehaviour
 {
 
     Rigidbody2D myRB;
     [SerializeField] float velocity = 5;
+    [SerializeField] int live;
     private float horizontalInput;
     private float verticalInput;
     private Vector3 target;
@@ -19,6 +21,9 @@ public class PlayerControl : MonoBehaviour
     Vector2 direccion;
     private int distance = 10;
     private bool dispararRayo;
+
+
+    public event Action<int> onPlayerDamaged;
 
 
 
@@ -47,6 +52,7 @@ public class PlayerControl : MonoBehaviour
     {
         currentArma.SetPlayer(this);
         dispararRayo = true;
+        live = 100;
     }
 
     
@@ -140,5 +146,30 @@ public class PlayerControl : MonoBehaviour
         linerender.positionCount = 0;
         yield return new WaitForSeconds(1);
         dispararRayo = true;
+    }
+
+    private void RecibirDaño(int damage)
+    {
+        live -= damage;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.gameObject.tag == "Enemy")
+        {
+            RecibirDaño(collision.GetComponent<ControladorEnemy>().GetDamage());
+            onPlayerDamaged?.Invoke(collision.GetComponent<ControladorEnemy>().GetDamage());
+        }
+        else if (collision.gameObject.tag == "Boss")
+        {
+            RecibirDaño(collision.GetComponent<BossController>().GetDamage());
+            onPlayerDamaged?.Invoke(collision.GetComponent<BossController>().GetDamage());
+        }
+        else if (collision.gameObject.tag == "BossBullet")
+        {
+            RecibirDaño(collision.GetComponent<BulletEnemy>().GetDamage());
+            onPlayerDamaged?.Invoke(collision.GetComponent<BulletEnemy>().GetDamage());
+            Destroy(collision.gameObject);
+        }
     }
 }
