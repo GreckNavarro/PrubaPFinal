@@ -149,8 +149,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 0}
   myRB2D: {fileID: 0}
-  velocity: 7
-  vida: 1
+  velocity: 4
+  vida: 3
   damage: 10
   puntaje: 10
 --- !u!95 &-7481489139910286288

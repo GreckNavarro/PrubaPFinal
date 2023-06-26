@@ -12,10 +12,12 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] TMP_Text texto;
     [SerializeField] TMP_Text live;
     int maximos = 0;
+    int enemigos = 0;
 
     bool bossactived;
 
     public event Action InvokeBoss;
+    public event Action NextEnemie;
 
 
     public int puntaje = 0;
@@ -48,10 +50,17 @@ public class ScoreManager : MonoBehaviour
     public void HandleEnemyDestroy(int bonuspuntaje)
     {
         puntaje += bonuspuntaje;
+        enemigos += bonuspuntaje;
         if (bossactived == false)
         {
             maximos += bonuspuntaje;
             InvocarBoss();
+        }
+        if (enemigos >= 100)
+        {
+            NextEnemie?.Invoke();
+            enemigos = 0;
+
         }
 
     }
@@ -73,5 +82,8 @@ public class ScoreManager : MonoBehaviour
             maximos = 0;
 
         }
+       
     }
+
+
 }

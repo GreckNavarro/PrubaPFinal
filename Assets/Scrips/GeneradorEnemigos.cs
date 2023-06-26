@@ -8,6 +8,7 @@ public class GeneradorEnemigos : MonoBehaviour
     SimpleLinkList<GameObject> spawners;
     SimpleLinkList<GameObject> enemies;
     [SerializeField] GameObject lampara;
+
     [SerializeField] PlayerControl player;
     [SerializeField] ContenerEnemigos contenedor;
     public int numeroEnemigos = 1;
@@ -22,9 +23,12 @@ public class GeneradorEnemigos : MonoBehaviour
 
 
     private float anguloasumar;
-    private int comparador = 300;
 
 
+    private void Awake()
+    {
+        score.NextEnemie += ChangeEnemy;
+    }
 
     void Start()
     {
@@ -116,11 +120,17 @@ public class GeneradorEnemigos : MonoBehaviour
 
     private void ChangeEnemy()
     {
-        if (score.puntaje >= comparador)
+        
+        if (indicador < enemies.GetCount() - 1)
         {
             indicador++;
             enemigoactual = enemies.GetNodeAtPosition(indicador);
         }
+        else if(indicador == enemies.GetCount() -1)
+        {
+            Debug.Log("Ya no se puede sumar papu");
+        }
+        Debug.Log("Indicador: " + indicador);
     }
 
 }
