@@ -17,7 +17,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] private Armas armaenmano;
     private Transform Disparador;
     [SerializeField] LineRenderer linerender;
-    private int proyectil;
+    [SerializeField] GameObject particlesburbujas;
     Vector2 direccion;
     private int distance = 10;
     private bool dispararRayo;
@@ -86,6 +86,7 @@ public class PlayerControl : MonoBehaviour
             else
             {
                 currentArma.Shoot();
+                Instantiate(particlesburbujas, Disparador.transform.position, particlesburbujas.transform.rotation);
             }
 
         }
