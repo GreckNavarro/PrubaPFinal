@@ -14,8 +14,12 @@ public class ScoreManager : MonoBehaviour
     int maximos = 0;
     int enemigos = 0;
 
-    bool bossactived;
 
+    [SerializeField] ScoreSO newScore;
+
+
+
+    bool bossactived;
     public event Action InvokeBoss;
     public event Action NextEnemie;
 
@@ -31,7 +35,7 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        vida = 100;
+        vida = 20;
         playerController = player.GetComponent<PlayerControl>();
     }
 
@@ -68,7 +72,11 @@ public class ScoreManager : MonoBehaviour
     private void HandlePlayerDamaged(int damage)
     {
         vida -= damage;
-
+        if(vida <= 0)
+        {
+            newScore.NuevoPuntaje(puntaje);
+            Destroy(player);
+        }
     }
 
 

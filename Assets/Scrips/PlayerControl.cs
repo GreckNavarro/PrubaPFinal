@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class PlayerControl : MonoBehaviour
 {
@@ -9,8 +11,7 @@ public class PlayerControl : MonoBehaviour
     Rigidbody2D myRB;
     [SerializeField] float velocity = 5;
     [SerializeField] int live;
-    private float horizontalInput;
-    private float verticalInput;
+
     private Vector3 target;
     public Pilas.StackP<ArmaSO> armas;
     [SerializeField] private ArmaSO currentArma;
@@ -26,6 +27,10 @@ public class PlayerControl : MonoBehaviour
     public event Action<int> onPlayerDamaged;
 
 
+    [Header("InputSystem")]
+    Vector2 rawInputMovement;
+    Vector3 mouseposition;
+
 
     // Disparo
     private float angulosgrados;
@@ -33,7 +38,7 @@ public class PlayerControl : MonoBehaviour
 
     public Vector2 DireccionShot()
     {
-        direccion = target - transform.position;
+        direccion = mouseposition - transform.position;
         return direccion;
     }
     public GameObject GetPositionArma()
@@ -70,26 +75,6 @@ public class PlayerControl : MonoBehaviour
     {
         MovementPlayer();
         Apuntar();
-        
-        if (Input.GetMouseButtonDown(0))
-        {
-
-          
-            if(currentArma.GetProyectil() == 0)
-            {
-                if(dispararRayo == true)
-                {
-                    currentArma.Shoot();
-                    StartCoroutine(ShootLaser());
-                }
-            }
-            else
-            {
-                currentArma.Shoot();
-                Instantiate(particlesburbujas, Disparador.transform.position, particlesburbujas.transform.rotation);
-            }
-
-        }
     }
     public void SetStack(ArmaSO armanueva)
     {
@@ -119,21 +104,14 @@ public class PlayerControl : MonoBehaviour
 
     private void MovementPlayer()
     {
-        horizontalInput = Input.GetAxis("Horizontal");
-        verticalInput = Input.GetAxis("Vertical");
-
-        Vector2 Inputs = new Vector2(horizontalInput, verticalInput);
-        myRB.velocity = Inputs * velocity;
+        myRB.velocity = rawInputMovement * velocity;
     }
     private void Apuntar()
     {
-        target = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-
-        float anguloRadianes = Mathf.Atan2(target.y - transform.position.y, target.x - transform.position.x);
+    
+        float anguloRadianes = Mathf.Atan2(mouseposition.y - transform.position.y, mouseposition.x - transform.position.x);
         angulosgrados = (Mathf.Rad2Deg * anguloRadianes) - 90;
         transform.rotation = Quaternion.Euler(0, 0, angulosgrados);
-
-
     }
 
 
@@ -173,4 +151,41 @@ public class PlayerControl : MonoBehaviour
             Destroy(collision.gameObject);
         }
     }
-}
+
+    public void OnMovement(InputAction.CallbackContext value)
+    {
+        Vector2 inputMovement = value.ReadValue<Vector2>();
+        rawInputMovement = new Vector2(inputMovement.x, inputMovement.y);
+    }
+
+    public void OnAim(InputAction.CallbackContext value)
+    {
+        Debug.Log(mouseposition);
+        Vector2 direccionmouse = Camera.main.ScreenToWorldPoint(value.ReadValue<Vector2>());
+        mouseposition = direccionmouse;
+    }
+
+
+    public void OnFire(InputAction.CallbackContext value)
+    {
+        if (value.started)
+        {
+            Debug.Log("Hola");
+            if (currentArma.GetProyectil() == 0)
+            {
+                if (dispararRayo == true)
+                {
+                    currentArma.Shoot();
+                    StartCoroutine(ShootLaser());
+                }
+            }
+            else
+            {
+                currentArma.Shoot();
+                Instantiate(particlesburbujas, Disparador.transform.position, particlesburbujas.transform.rotation);
+            }
+        }
+    }
+
+
+}   

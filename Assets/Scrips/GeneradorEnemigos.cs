@@ -43,6 +43,7 @@ public class GeneradorEnemigos : MonoBehaviour
         enemigoactual = enemies.GetNodeAtStart();
 
 
+       
 
         GenerarSpawns();
         StartCoroutine(GenerarEnemigos());
@@ -90,7 +91,11 @@ public class GeneradorEnemigos : MonoBehaviour
 
 
         yield return new WaitForSeconds(2f);
-        StartCoroutine(GenerarEnemigos());
+        if(player != null)
+        {
+            StartCoroutine(GenerarEnemigos());
+        }
+     
 
     }
     private IEnumerator GenerarHordas()
@@ -115,7 +120,11 @@ public class GeneradorEnemigos : MonoBehaviour
             enemie.GetComponent<ControladorEnemy>().onEnemyDestroy += score.HandleEnemyDestroy;
         }
         yield return new WaitForSeconds(timeRespawn);
-        StartCoroutine(GenerarHordas());
+        if (player != null)
+        {
+            StartCoroutine(GenerarHordas());
+        }
+            
     }
 
     private void ChangeEnemy()

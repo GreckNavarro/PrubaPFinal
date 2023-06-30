@@ -43,8 +43,16 @@ public class ControladorEnemy : MonoBehaviour
     }
     private void Update()
     {
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, velocity * Time.deltaTime);
-        Mirar();
+        if(player != null)
+        {
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, velocity * Time.deltaTime);
+            Mirar();
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
+        
 
     }
 
