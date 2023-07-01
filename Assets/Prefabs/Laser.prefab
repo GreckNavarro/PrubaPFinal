@@ -148,3 +148,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   arma: {fileID: 11400000, guid: 0947270fb6623a341972c79346efe481, type: 2}
   player: {fileID: 0}
+  angulo: {x: 0, y: 0, z: 3}
