@@ -32,6 +32,7 @@ public class PlayerControl : MonoBehaviour
     Vector3 mouseposition;
 
 
+
     // Disparo
     private float angulosgrados;
 
@@ -74,7 +75,6 @@ public class PlayerControl : MonoBehaviour
     void Update()
     {
         MovementPlayer();
-        Apuntar();
     }
     public void SetStack(ArmaSO armanueva)
     {
@@ -105,13 +105,6 @@ public class PlayerControl : MonoBehaviour
     private void MovementPlayer()
     {
         myRB.velocity = rawInputMovement * velocity;
-    }
-    private void Apuntar()
-    {
-    
-        float anguloRadianes = Mathf.Atan2(mouseposition.y - transform.position.y, mouseposition.x - transform.position.x);
-        angulosgrados = (Mathf.Rad2Deg * anguloRadianes) - 90;
-        transform.rotation = Quaternion.Euler(0, 0, angulosgrados);
     }
 
 
@@ -160,9 +153,11 @@ public class PlayerControl : MonoBehaviour
 
     public void OnAim(InputAction.CallbackContext value)
     {
-        Debug.Log(mouseposition);
         Vector2 direccionmouse = Camera.main.ScreenToWorldPoint(value.ReadValue<Vector2>());
         mouseposition = direccionmouse;
+        float anguloRadianes = Mathf.Atan2(mouseposition.y - transform.position.y, mouseposition.x - transform.position.x);
+        angulosgrados = (Mathf.Rad2Deg * anguloRadianes) - 90;
+        transform.rotation = Quaternion.Euler(0, 0, angulosgrados);
     }
 
 
