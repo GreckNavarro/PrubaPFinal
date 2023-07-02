@@ -12,6 +12,11 @@ public class ScoreSO : ScriptableObject
     [SerializeField] int[] scores;
 
 
+    public int[] GetScore()
+    {
+        return scores;
+    }
+
     private void OnEnable()
     {
         if (scores == null)

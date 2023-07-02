@@ -14,6 +14,8 @@ public class ScoreManager : MonoBehaviour
     int maximos = 0;
     int enemigos = 0;
 
+    [SerializeField] GameObject muerte;
+
 
     [SerializeField] ScoreSO newScore;
 
@@ -76,6 +78,7 @@ public class ScoreManager : MonoBehaviour
         {
             newScore.NuevoPuntaje(puntaje);
             Destroy(player);
+            muerte.SetActive(true);
         }
     }
 

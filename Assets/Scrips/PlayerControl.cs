@@ -165,7 +165,6 @@ public class PlayerControl : MonoBehaviour
     {
         if (value.started)
         {
-            Debug.Log("Hola");
             if (currentArma.GetProyectil() == 0)
             {
                 if (dispararRayo == true)
