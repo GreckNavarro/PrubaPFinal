@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class ButtonsGameplay : MonoBehaviour
 {
     [SerializeField] GameObject MenuPause;
+    [SerializeField] GameObject player;
     public void Pause()
     {
         Time.timeScale = 0;
@@ -19,7 +20,10 @@ public class ButtonsGameplay : MonoBehaviour
     }
     public void GoMenu()
     {
+        Time.timeScale = 1;
+        player.SetActive(false);
         SceneManager.LoadScene("Menú");
+
     }
     public void Restart()
     {

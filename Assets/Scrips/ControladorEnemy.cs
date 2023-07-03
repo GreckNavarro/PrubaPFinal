@@ -84,7 +84,9 @@ public class ControladorEnemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             player.Pop();
-            Destroy(gameObject); //Hacer que mi enemigo vaya para atrás
+            Destroy(gameObject);
+            GameObject particles1 = Instantiate(particles, transform.position, Quaternion.identity);
+            Destroy(particles1, 1f);//Hacer que mi enemigo vaya para atrás
         }
     }
  

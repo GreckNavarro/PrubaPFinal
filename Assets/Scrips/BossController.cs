@@ -14,6 +14,7 @@ public class BossController : MonoBehaviour
     [SerializeField] float cantidadspores = 10;
     private float disparo = 0;
     [SerializeField] GameObject particles;
+    [SerializeField] int puntajeextra = 100;
 
     private int damage = 10;
 
@@ -63,6 +64,7 @@ public class BossController : MonoBehaviour
         {
             padre.SetActive(false);
             score.SetBool(false);
+            score.HandleEnemyDestroy(puntajeextra);
         }
     }
 

@@ -11,6 +11,7 @@ public class ScoreManager : MonoBehaviour
     PlayerControl playerController;
     [SerializeField] TMP_Text texto;
     [SerializeField] TMP_Text live;
+    
     int maximos = 0;
     int enemigos = 0;
 

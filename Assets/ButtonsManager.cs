@@ -22,4 +22,8 @@ public class ButtonsManager : MonoBehaviour
     {
         controles.SetActive(false);
     }
+    public void Exit()
+    {
+        Application.Quit();
+    }
 }

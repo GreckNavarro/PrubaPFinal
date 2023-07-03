@@ -1780,6 +1780,7 @@ MonoBehaviour:
   prefabsSpores: {fileID: 206318517864454613, guid: f65c50e230eb90f4b9969f1bf9ababac, type: 3}
   cantidadspores: 10
   particles: {fileID: 7392870964553887652, guid: 3cc8a7f6987865e4b8b408694474caac, type: 3}
+  puntajeextra: 100
 --- !u!212 &325437473
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -4448,6 +4449,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MenuPause: {fileID: 1066477747}
+  player: {fileID: 579656549}
 --- !u!4 &779071653
 Transform:
   m_ObjectHideFlags: 0
