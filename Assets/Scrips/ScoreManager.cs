@@ -83,6 +83,7 @@ public class ScoreManager : MonoBehaviour
         {
             newScore.NuevoPuntaje(puntaje);
             Destroy(player);
+            Time.timeScale = 0;
             muerte.SetActive(true);
             advertencia.SetActive(false);
         }
@@ -92,7 +93,7 @@ public class ScoreManager : MonoBehaviour
 
     public void InvocarBoss()
     {
-        if (maximos >= 500)
+        if (maximos >= 150)
         {
             InvokeBoss?.Invoke();
             Debug.Log(maximos);

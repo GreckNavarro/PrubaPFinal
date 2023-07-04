@@ -26,6 +26,9 @@ public class PlayerControl : MonoBehaviour
 
     public event Action<int> onPlayerDamaged;
 
+    [SerializeField] EffectsSO disparo;
+    [SerializeField] EffectsSO rayo;
+
 
     [Header("InputSystem")]
     Vector2 rawInputMovement;
@@ -112,6 +115,7 @@ public class PlayerControl : MonoBehaviour
     {
         dispararRayo = false;
         Vector3 endposition = ((Vector3)direccion * distance) + Disparador.position;
+        rayo.StartSoundSelection();
         linerender.positionCount = 2;
         linerender.SetPositions(new Vector3[] { Disparador.position, endposition});
         yield return new WaitForSeconds(0.25f);
@@ -153,14 +157,20 @@ public class PlayerControl : MonoBehaviour
 
     public void OnAim(InputAction.CallbackContext value)
     {
-        Vector2 direccionmouse = Camera.main.ScreenToWorldPoint(value.ReadValue<Vector2>());
-        mouseposition = direccionmouse;
-        float anguloRadianes = Mathf.Atan2(mouseposition.y - transform.position.y, mouseposition.x - transform.position.x);
-        angulosgrados = (Mathf.Rad2Deg * anguloRadianes) - 90;
-        transform.rotation = Quaternion.Euler(0, 0, angulosgrados);
+        Ray ray = Camera.main.ScreenPointToRay(value.ReadValue<Vector2>());
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit))
+        {
+            Vector2 mousePosition = new Vector2(hit.point.x, hit.point.y);
+            mouseposition = mousePosition;
+            float anguloRadianes = Mathf.Atan2(mouseposition.y - transform.position.y, mouseposition.x - transform.position.x);
+            angulosgrados = (Mathf.Rad2Deg * anguloRadianes) - 90;
+            transform.rotation = Quaternion.Euler(0, 0, angulosgrados);
+           
+        }
+
     }
-
-
     public void OnFire(InputAction.CallbackContext value)
     {
         if (value.started)
@@ -176,6 +186,7 @@ public class PlayerControl : MonoBehaviour
             else
             {
                 currentArma.Shoot();
+                disparo.StartSoundSelection();
                 Instantiate(particlesburbujas, Disparador.transform.position, particlesburbujas.transform.rotation);
             }
         }

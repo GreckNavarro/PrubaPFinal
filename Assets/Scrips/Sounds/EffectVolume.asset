@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bd1e002f712e4be4592e2b5ab2c615f6, type: 3}
+  m_Name: EffectVolume
+  m_EditorClassIdentifier: 
+  myMixer: {fileID: 24100000, guid: 1617181431a3c014aa357c73f3f20fae, type: 2}
+  channelVolumen: EffectVolume
+  currentVolume: 0
+  isMuted: 0

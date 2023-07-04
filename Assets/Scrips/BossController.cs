@@ -18,6 +18,8 @@ public class BossController : MonoBehaviour
     [SerializeField] GameObject particles;
     [SerializeField] int puntajeextra = 100;
     [SerializeField] GameObject advertencia;
+    [SerializeField] ChangeAudios sounds;
+    [SerializeField] GameObject player;
 
     private int damage = 10;
 
@@ -46,7 +48,15 @@ public class BossController : MonoBehaviour
     private void OnEnable()
     {
         vida = 50;
-        StartCoroutine(CanalizarAtaque());
+        if(player != null)
+        {
+            StartCoroutine(CanalizarAtaque());
+        }
+        else if(player == null)
+        {
+            Destroy(this.gameObject);
+        }
+            
     }
 
 
@@ -72,6 +82,7 @@ public class BossController : MonoBehaviour
             score.SetBool(false);
             advertencia.SetActive(false);
             score.HandleEnemyDestroy(puntajeextra);
+            sounds.ChangeAudioClip();
         }
     }
 
