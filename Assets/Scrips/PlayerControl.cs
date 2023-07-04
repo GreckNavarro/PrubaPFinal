@@ -192,5 +192,15 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
+    public void OnAimGamepad(InputAction.CallbackContext value)
+    {
+        Vector2 direccionmouse = value.ReadValue<Vector2>();
+        Debug.Log(direccionmouse);
+        mouseposition = direccionmouse;
+        float anguloRadianes = Mathf.Atan2(mouseposition.y, mouseposition.x);
+        angulosgrados = (Mathf.Rad2Deg * anguloRadianes - 90);
+        transform.rotation = Quaternion.Euler(0, 0, angulosgrados);
+    }
+
 
 }   

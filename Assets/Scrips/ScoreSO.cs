@@ -9,39 +9,37 @@ using UnityEngine;
 public class ScoreSO : ScriptableObject
 {
 
-    [SerializeField] int[] scores;
+    [SerializeField] List<int> scores;
 
 
-    public int[] GetScore()
+    public List<int> GetScore()
     {
         return scores;
     }
 
-    private void OnEnable()
-    {
-        if (scores == null)
-        {
-            scores = new int[10];
-        }
-    }
 
     public void NuevoPuntaje(int newScore)
     {
-        bool isChanged = false;
-        for (int i = 0; i < scores.Length; i++)
-        {
-            if (newScore > scores[i] && !isChanged)
-            {
-                int temp = scores[i];
-                scores[i] = newScore;
-                newScore = temp;
-                isChanged = true;
-            }
-            else if (isChanged == true)
-            { 
-                break; 
-            }
+        scores.Add(newScore);
+        Debug.Log("Se está ordenando");
+        BurbleSortOrden(scores);
+        Debug.Log("Se ordenandó");
+    }
 
+    public void BurbleSortOrden(List<int> maxScore)
+    {
+        int tmp;
+        for (int i = 0; i < maxScore.Count; i++)
+        {
+            for (int j = 0; j < maxScore.Count - i - 1; j++)
+            {
+                if (maxScore[i] < maxScore[i + 1])
+                {
+                    tmp = maxScore[j];
+                    maxScore[j] = maxScore[j + 1];
+                    maxScore[j + 1] = tmp;
+                }
+            }
         }
     }
 

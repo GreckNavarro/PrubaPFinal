@@ -2295,7 +2295,7 @@ MonoBehaviour:
   particles: {fileID: 7392870964553887652, guid: 3cc8a7f6987865e4b8b408694474caac, type: 3}
   puntajeextra: 100
   advertencia: {fileID: 1198680887}
-  sounds: {fileID: 0}
+  sounds: {fileID: 47890677}
   player: {fileID: 579656549}
 --- !u!212 &325437473
 SpriteRenderer:
@@ -4550,15 +4550,51 @@ MonoBehaviour:
     m_ActionId: 969fead2-b6c4-47a6-b701-6e31302b05c3
     m_ActionName: Keyboard/Aim[/Mouse/position]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 579656550}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: OnAimGamepad
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 106a046e-01c8-42e6-96d9-e1cf1d9bcf20
     m_ActionName: Gamepad/Aim
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 579656550}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: OnMovement
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 0bb07afb-c341-4118-a753-6ced10f981c7
     m_ActionName: Gamepad/Movement
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 579656550}
+        m_TargetAssemblyTypeName: PlayerControl, Assembly-CSharp
+        m_MethodName: OnFire
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 6ec0b380-4c4b-45d5-85e9-256ee9e45f85
     m_ActionName: Gamepad/Fire
   m_NeverAutoSwitchControlSchemes: 0
