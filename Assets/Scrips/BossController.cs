@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
+
 
 
 public class BossController : MonoBehaviour
@@ -15,6 +17,7 @@ public class BossController : MonoBehaviour
     private float disparo = 0;
     [SerializeField] GameObject particles;
     [SerializeField] int puntajeextra = 100;
+    [SerializeField] GameObject advertencia;
 
     private int damage = 10;
 
@@ -36,6 +39,9 @@ public class BossController : MonoBehaviour
     {
         padre.SetActive(true);
         score.SetBool(true);
+        advertencia.SetActive(true);
+
+
     }
     private void OnEnable()
     {
@@ -64,6 +70,7 @@ public class BossController : MonoBehaviour
         {
             padre.SetActive(false);
             score.SetBool(false);
+            advertencia.SetActive(false);
             score.HandleEnemyDestroy(puntajeextra);
         }
     }

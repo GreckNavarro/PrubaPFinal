@@ -11,7 +11,11 @@ public class ScoreManager : MonoBehaviour
     PlayerControl playerController;
     [SerializeField] TMP_Text texto;
     [SerializeField] TMP_Text live;
-    
+    [SerializeField] GameObject advertencia;
+
+
+
+
     int maximos = 0;
     int enemigos = 0;
 
@@ -63,7 +67,7 @@ public class ScoreManager : MonoBehaviour
             maximos += bonuspuntaje;
             InvocarBoss();
         }
-        if (enemigos >= 100)
+        if (enemigos >= 1500)
         {
             NextEnemie?.Invoke();
             enemigos = 0;
@@ -80,6 +84,7 @@ public class ScoreManager : MonoBehaviour
             newScore.NuevoPuntaje(puntaje);
             Destroy(player);
             muerte.SetActive(true);
+            advertencia.SetActive(false);
         }
     }
 
@@ -87,7 +92,7 @@ public class ScoreManager : MonoBehaviour
 
     public void InvocarBoss()
     {
-        if (maximos >= 1000)
+        if (maximos >= 500)
         {
             InvokeBoss?.Invoke();
             Debug.Log(maximos);
