@@ -64,7 +64,11 @@ public class ArmaSO : ScriptableObject
                 if (raycast[i].collider.gameObject.tag == "Enemy")
                 {
                     raycast[i].collider.gameObject.GetComponent<ControladorEnemy>().RecibirDaño(damage);
-                    raycast[i].collider.gameObject.GetComponent<ControladorEnemy>().SetLayer(0);
+                }
+                if (raycast[i].collider.gameObject.tag == "Boss")
+                {
+                    raycast[i].collider.gameObject.GetComponent<BossController>().RecibirDaño(damage);
+ 
                 }
             }
 
