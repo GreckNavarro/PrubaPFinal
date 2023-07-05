@@ -23,6 +23,7 @@ public class ScoreSO : ScriptableObject
         scores.Add(newScore);
         Debug.Log("Se está ordenando");
         BurbleSortOrden(scores);
+        scores.RemoveAt(10);
         Debug.Log("Se ordenandó");
     }
 
@@ -33,7 +34,7 @@ public class ScoreSO : ScriptableObject
         {
             for (int j = 0; j < maxScore.Count - i - 1; j++)
             {
-                if (maxScore[i] < maxScore[i + 1])
+                if (maxScore[j] < maxScore[j + 1])
                 {
                     tmp = maxScore[j];
                     maxScore[j] = maxScore[j + 1];

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-class SimpleLinkList<T>
+public class SimpleLinkList<T>
 {
     class Node
     {
@@ -211,5 +211,69 @@ class SimpleLinkList<T>
             previousNode.Next = nextNode;
             count = count + 1;
         }
+
     }
+
+    private Node GetLastNode()
+    {
+        Node tmp = Head;
+        while (tmp.Next != Head)
+        {
+            tmp = tmp.Next;
+        }
+        return tmp;
+    }
+    public void ModifyAtStart(T value)
+    {
+        if (Head == null)
+        {
+            Console.WriteLine("Acceso denegado rufián");
+        }
+        else
+        {
+            Head.Value = value;
+        }
+    }
+    public void ModifyAtEnd(T value)
+    {
+        if (Head == null)
+        {
+            Console.WriteLine("Acceso denegado rufián");
+        }
+        else
+        {
+            Node node = GetLastNode();
+            node.Value = value;
+        }
+    }
+
+    public void ModifyAtPosition(T value, int position)
+    {
+        if (position == 0)
+        {
+            ModifyAtStart(value);
+        }
+        else if (position == count - 1)
+        {
+            ModifyAtEnd(value);
+        }
+        else if (position >= count || position < 0)
+        {
+            Console.WriteLine("Acceso denegado rufián");
+        }
+        else
+        {
+            Node tmp = Head;
+            int iterator = 0;
+            while (iterator < position)
+            {
+                tmp = tmp.Next;
+                iterator = iterator + 1;
+            }
+            tmp.Value = value;
+        }
+
+    }
+
+
 }
