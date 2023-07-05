@@ -11,6 +11,7 @@ TagManager:
   - Nodo
   - NodoCentral
   - BossBullet
+  - Objetos
   layers:
   - Default
   - TransparentFX

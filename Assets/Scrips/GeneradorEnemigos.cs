@@ -129,7 +129,7 @@ public class GeneradorEnemigos : MonoBehaviour
 
     private void ChangeEnemy()
     {
-        
+        timeRespawn = timeRespawn - 1;
         if (indicador < enemies.GetCount() - 1)
         {
             indicador++;

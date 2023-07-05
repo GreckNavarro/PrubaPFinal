@@ -40,6 +40,10 @@ public class Bullet : MonoBehaviour
             Destroy(gameObject);
             collision.GetComponent<BossController>().RecibirDaño(damage);
         }
+        else if (collision.gameObject.tag == "Objetos")
+        {
+            Destroy(gameObject);
+        }
     }
 
 }

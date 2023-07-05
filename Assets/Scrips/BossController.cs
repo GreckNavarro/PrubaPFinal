@@ -21,6 +21,8 @@ public class BossController : MonoBehaviour
     [SerializeField] ChangeAudios sounds;
     [SerializeField] GameObject player;
 
+    [SerializeField] TMP_Text textovida;
+
     private int damage = 10;
 
     private void Awake()
@@ -42,13 +44,15 @@ public class BossController : MonoBehaviour
         padre.SetActive(true);
         score.SetBool(true);
         advertencia.SetActive(true);
+        textovida.gameObject.SetActive(true);
 
 
     }
     private void OnEnable()
     {
         vida = 50;
-        if(player != null)
+        textovida.text = "VIDA BOSS: " + vida;
+        if (player != null)
         {
             StartCoroutine(CanalizarAtaque());
         }
@@ -75,12 +79,15 @@ public class BossController : MonoBehaviour
     {
         vida -= damage;
         GameObject particles1 = Instantiate(particles, transform.position, Quaternion.identity);
+        textovida.text = "VIDA BOSS: " + vida;
         Destroy(particles1, 1f);
         if (vida <= 0)
         {
             padre.SetActive(false);
             score.SetBool(false);
+            transform.position = padre.transform.position;
             advertencia.SetActive(false);
+            textovida.gameObject.SetActive(false);
             score.HandleEnemyDestroy(puntajeextra);
             sounds.ChangeAudioClip();
         }
@@ -102,7 +109,7 @@ public class BossController : MonoBehaviour
 
             }
         }
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         StartCoroutine(CanalizarAtaque());
     }
 
