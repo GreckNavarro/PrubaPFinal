@@ -9,10 +9,10 @@ using UnityEngine;
 public class ScoreSO : ScriptableObject
 {
 
-    [SerializeField] List<int> scores;
+    SimpleLinkList<int> scores;
 
 
-    public List<int> GetScore()
+    public SimpleLinkList<int> GetScore()
     {
         return scores;
     }
@@ -20,27 +20,43 @@ public class ScoreSO : ScriptableObject
 
     public void NuevoPuntaje(int newScore)
     {
-        scores.Add(newScore);
+        if (scores == null)
+        {
+            scores = new SimpleLinkList<int>();
+            for (int i = 0; i < 10; i++)
+            {
+                scores.AddNodeAtStart(0);
+            }
+        }
+        scores.AddNodeAtEnd(newScore);
         Debug.Log("Se está ordenando");
         BurbleSortOrden(scores);
-        scores.RemoveAt(10);
+        scores.RemoveNodeAtPosition(10);
         Debug.Log("Se ordenandó");
+        PrintList(scores);
     }
 
-    public void BurbleSortOrden(List<int> maxScore)
+    public void BurbleSortOrden(SimpleLinkList<int> maxScore)
     {
         int tmp;
-        for (int i = 0; i < maxScore.Count; i++)
+        for (int i = 0; i < maxScore.GetCount(); i++)
         {
-            for (int j = 0; j < maxScore.Count - i - 1; j++)
+            for (int j = 0; j < maxScore.GetCount() - i - 1; j++)
             {
-                if (maxScore[j] < maxScore[j + 1])
+                if (maxScore.GetNodeAtPosition(j) < maxScore.GetNodeAtPosition(j + 1))
                 {
-                    tmp = maxScore[j];
-                    maxScore[j] = maxScore[j + 1];
-                    maxScore[j + 1] = tmp;
+                    tmp = maxScore.GetNodeAtPosition(j);
+                    maxScore.ModifyAtPosition(maxScore.GetNodeAtPosition(j + 1), j);
+                    maxScore.ModifyAtPosition(tmp, j + 1);
                 }
             }
+        }
+    }
+    public void PrintList(SimpleLinkList<int> maxScore)
+    {
+        for(int i = 0; i < maxScore.GetCount(); i++)
+        {
+            Debug.Log(scores.GetNodeAtPosition(i));
         }
     }
 

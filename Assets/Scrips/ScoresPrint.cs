@@ -8,29 +8,26 @@ public class ScoresPrint : MonoBehaviour
 
     [SerializeField] TMP_Text[] listascores;
     [SerializeField] ScoreSO score;
-    List<int> scores;
+    SimpleLinkList<int> scores;
 
 
     private void Awake()
     {
-
         scores = score.GetScore();
-
-
-
     }
     private void OnEnable()
     {
-
         LlenadoScores();
     }
 
     public void LlenadoScores()
     {
     
-        for (int i = 0; i < listascores.Length; i++)
+        for (int i = 0; i < scores.GetCount(); i++)
         {
-            listascores[i].text = "Score: " + scores[i];
+     
+                listascores[i].text = "Score: " + scores.GetNodeAtPosition(i);
+       
         }
 
     }

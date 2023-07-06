@@ -214,37 +214,29 @@ public class SimpleLinkList<T>
 
     }
 
-    private Node GetLastNode()
+
+
+    public void ModifyAtStart(T newValue)
+    {
+        if (Head == null)
+        {
+            Console.WriteLine("Eso no se puede hacer papu");
+        }
+        else
+        {
+            Head.Value = newValue;
+        }
+    }
+
+
+    public void ModifyAtEnd(T newValue)
     {
         Node tmp = Head;
-        while (tmp.Next != Head)
+        while (tmp.Next != null)
         {
             tmp = tmp.Next;
         }
-        return tmp;
-    }
-    public void ModifyAtStart(T value)
-    {
-        if (Head == null)
-        {
-            Console.WriteLine("Acceso denegado rufián");
-        }
-        else
-        {
-            Head.Value = value;
-        }
-    }
-    public void ModifyAtEnd(T value)
-    {
-        if (Head == null)
-        {
-            Console.WriteLine("Acceso denegado rufián");
-        }
-        else
-        {
-            Node node = GetLastNode();
-            node.Value = value;
-        }
+        tmp.Value = newValue;
     }
 
     public void ModifyAtPosition(T value, int position)
@@ -257,18 +249,18 @@ public class SimpleLinkList<T>
         {
             ModifyAtEnd(value);
         }
-        else if (position >= count || position < 0)
+        else if (position > count)
         {
-            Console.WriteLine("Acceso denegado rufián");
+            Console.WriteLine("Eso no se puede papu");
         }
         else
         {
-            Node tmp = Head;
             int iterator = 0;
+            Node tmp = Head;
             while (iterator < position)
             {
-                tmp = tmp.Next;
                 iterator = iterator + 1;
+                tmp = tmp.Next;
             }
             tmp.Value = value;
         }
