@@ -22,6 +22,7 @@ public class BossController : MonoBehaviour
     [SerializeField] GameObject player;
 
     [SerializeField] TMP_Text textovida;
+    [SerializeField] GameObject bossimage;
 
     private int damage = 10;
 
@@ -44,14 +45,14 @@ public class BossController : MonoBehaviour
         padre.SetActive(true);
         score.SetBool(true);
         advertencia.SetActive(true);
-        textovida.gameObject.SetActive(true);
+        bossimage.SetActive(true);
 
 
     }
     private void OnEnable()
     {
-        vida = 50;
-        textovida.text = "VIDA BOSS: " + vida;
+        vida = 100;
+        textovida.text =  vida.ToString();
         if (player != null)
         {
             StartCoroutine(CanalizarAtaque());
@@ -87,7 +88,7 @@ public class BossController : MonoBehaviour
             score.SetBool(false);
             transform.position = padre.transform.position;
             advertencia.SetActive(false);
-            textovida.gameObject.SetActive(false);
+            bossimage.SetActive(false);
             score.HandleEnemyDestroy(puntajeextra);
             sounds.ChangeAudioClip();
         }

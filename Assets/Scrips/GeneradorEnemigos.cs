@@ -133,17 +133,17 @@ public class GeneradorEnemigos : MonoBehaviour
 
     private void ChangeEnemy()
     {
-        timeRespawn = timeRespawn - 1;
+        
         if (indicador < enemies.GetCount() - 1)
         {
+            timeRespawn = timeRespawn - 1;
             indicador++;
             enemigoactual = enemies.GetNodeAtPosition(indicador);
         }
         else if(indicador == enemies.GetCount() -1)
         {
-            Debug.Log("Ya no se puede sumar papu");
+            Debug.Log("Lista Recorrida");
         }
-        Debug.Log("Indicador: " + indicador);
     }
 
 }

@@ -119,7 +119,7 @@ public class PlayerControl : MonoBehaviour
         linerender.SetPositions(new Vector3[] { Disparador.position, endposition});
         yield return new WaitForSeconds(0.25f);
         linerender.positionCount = 0;
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(0.5f);
         dispararRayo = true;
     }
 

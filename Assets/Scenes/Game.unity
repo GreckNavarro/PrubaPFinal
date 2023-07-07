@@ -2395,6 +2395,7 @@ MonoBehaviour:
   sounds: {fileID: 47890677}
   player: {fileID: 579656549}
   textovida: {fileID: 2145020114}
+  bossimage: {fileID: 822616965}
 --- !u!212 &325437473
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12915,7 +12916,7 @@ MonoBehaviour:
   player: {fileID: 579656549}
   muerte: {fileID: 1871397422}
   advertencia: {fileID: 1198680887}
-  vidaenemigo: {fileID: 2145020113}
+  vidaenemigo: {fileID: 822616965}
   texto: {fileID: 2129598209}
   live: {fileID: 2027881687}
   newScore: {fileID: 11400000, guid: 0933592173734b848a47115149eeae21, type: 2}
@@ -14458,7 +14459,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 50
+  m_text: 100
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 956408399cada9b4e96d8abeffd107a7, type: 2}
   m_sharedMaterial: {fileID: -4923388762736533311, guid: 956408399cada9b4e96d8abeffd107a7, type: 2}
