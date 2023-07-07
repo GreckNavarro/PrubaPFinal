@@ -29,7 +29,7 @@ public class ScoreManager : MonoBehaviour
     public event Action NextEnemie;
 
 
-    public int puntaje = 0;
+    private int puntaje = 0;
 
 
     public void SetBool(bool actived)
@@ -40,14 +40,14 @@ public class ScoreManager : MonoBehaviour
 
     private void Awake()
     {
-        vida = 20;
+        vida = 100;
         playerController = player.GetComponent<PlayerControl>();
     }
 
     private void OnGUI()
     {
-        texto.text = "Score: " + puntaje;
-        live.text = "Vida: " + vida;
+        texto.text = puntaje.ToString();
+        live.text = vida.ToString();
     }
 
     private void Start()
