@@ -7,21 +7,18 @@ using System;
 public class ScoreManager : MonoBehaviour
 {
     public GameObject player;
-    private int vida;
-    PlayerControl playerController;
-    [SerializeField] TMP_Text texto;
-    [SerializeField] TMP_Text live;
+    [SerializeField] GameObject muerte;
     [SerializeField] GameObject advertencia;
     [SerializeField] GameObject vidaenemigo;
 
-
-
-
+    private int vida;
     int maximos = 0;
     int enemigos = 0;
 
-    [SerializeField] GameObject muerte;
+    PlayerControl playerController;
 
+    [SerializeField] TMP_Text texto;
+    [SerializeField] TMP_Text live;
 
     [SerializeField] ScoreSO newScore;
 

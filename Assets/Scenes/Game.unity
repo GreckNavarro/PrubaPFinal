@@ -1310,13 +1310,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e58a1ee4505c8a34a85ca2407024e992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lampara: {fileID: 6539747543549657817, guid: 0d91facd9cd8b874aba0ae3ee35dfe41, type: 3}
+  spawner: {fileID: 6539747543549657817, guid: 0d91facd9cd8b874aba0ae3ee35dfe41, type: 3}
+  particlesBlood: {fileID: 7392870964553887652, guid: 3cc8a7f6987865e4b8b408694474caac, type: 3}
   player: {fileID: 579656550}
   contenedor: {fileID: 1849387110}
   numeroEnemigos: 1
   numerospawn: 10
   radio: 10
-  particlesBlood: {fileID: 7392870964553887652, guid: 3cc8a7f6987865e4b8b408694474caac, type: 3}
   timeRespawn: 7
   score: {fileID: 1948372528}
 --- !u!4 &205720147
@@ -12783,11 +12783,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 579656549}
-  texto: {fileID: 2129598209}
-  live: {fileID: 2027881687}
+  muerte: {fileID: 1871397422}
   advertencia: {fileID: 1198680887}
   vidaenemigo: {fileID: 2145020113}
-  muerte: {fileID: 1871397422}
+  texto: {fileID: 2129598209}
+  live: {fileID: 2027881687}
   newScore: {fileID: 11400000, guid: 0933592173734b848a47115149eeae21, type: 2}
   puntaje: 0
 --- !u!4 &1948372529

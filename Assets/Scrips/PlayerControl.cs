@@ -85,7 +85,6 @@ public class PlayerControl : MonoBehaviour
         currentArma = armas.GetTop();
         currentArma.SetPlayer(this);
         armaenmano.SetSprite(currentArma.GetSprite());
-        Debug.Log("Sumando");
         Debug.Log(armas.Count());
 
     }
@@ -187,7 +186,8 @@ public class PlayerControl : MonoBehaviour
             {
                 currentArma.Shoot();
                 disparo.StartSoundSelection();
-                Instantiate(particlesburbujas, Disparador.transform.position, particlesburbujas.transform.rotation);
+                GameObject burbujas = Instantiate(particlesburbujas, Disparador.transform.position, particlesburbujas.transform.rotation);
+                Destroy(burbujas, 1.0f);
             }
         }
     }

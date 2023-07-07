@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3791023903822804540}
   - component: {fileID: 8504871953069465576}
   m_Layer: 0
-  m_Name: Lampara
+  m_Name: Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

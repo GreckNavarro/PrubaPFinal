@@ -7,22 +7,26 @@ public class GeneradorEnemigos : MonoBehaviour
 
     SimpleLinkList<GameObject> spawners;
     SimpleLinkList<GameObject> enemies;
-    [SerializeField] GameObject lampara;
+    [SerializeField] GameObject spawner;
+    [SerializeField] GameObject particlesBlood;
+    GameObject enemigoactual;
 
     [SerializeField] PlayerControl player;
     [SerializeField] ContenerEnemigos contenedor;
-    public int numeroEnemigos = 1;
+
+
+
+    public int numeroEnemigos = 2;
     public int numerospawn = 10;
     public float radio;
-
-    [SerializeField] GameObject particlesBlood;
-    [SerializeField] float timeRespawn;
-    [SerializeField] ScoreManager score;
-    GameObject enemigoactual;
     private int indicador = 0;
-
-
     private float anguloasumar;
+    [SerializeField] float timeRespawn;
+
+
+    [SerializeField] ScoreManager score;
+   
+
 
 
     private void Awake()
@@ -68,7 +72,7 @@ public class GeneradorEnemigos : MonoBehaviour
 
             float currentangulo;
             currentangulo = (anguloasumar * i) * Mathf.Deg2Rad;
-            GameObject p1 = Instantiate(lampara, (new Vector3(centro.x + Mathf.Cos(currentangulo) * radio, centro.y + Mathf.Sin(currentangulo) * radio)), transform.rotation);
+            GameObject p1 = Instantiate(spawner, (new Vector3(centro.x + Mathf.Cos(currentangulo) * radio, centro.y + Mathf.Sin(currentangulo) * radio)), transform.rotation);
             spawners.AddNodeAtStart(p1);
         }
 

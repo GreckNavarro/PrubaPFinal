@@ -17,17 +17,20 @@ public class ScoreSO : ScriptableObject
         return scores;
     }
 
+    private void OnEnable()
+    {
+        scores = new SimpleLinkList<int>();
+        for (int i = 0; i < 10; i++)
+        {
+            scores.AddNodeAtStart(0);
+        }
+
+    }
+
 
     public void NuevoPuntaje(int newScore)
     {
-        if (scores == null)
-        {
-            scores = new SimpleLinkList<int>();
-            for (int i = 0; i < 10; i++)
-            {
-                scores.AddNodeAtStart(0);
-            }
-        }
+
         scores.AddNodeAtEnd(newScore);
         Debug.Log("Se está ordenando");
         BurbleSortOrden(scores);
@@ -54,7 +57,7 @@ public class ScoreSO : ScriptableObject
     }
     public void PrintList(SimpleLinkList<int> maxScore)
     {
-        for(int i = 0; i < maxScore.GetCount(); i++)
+        for (int i = 0; i < maxScore.GetCount(); i++)
         {
             Debug.Log(scores.GetNodeAtPosition(i));
         }

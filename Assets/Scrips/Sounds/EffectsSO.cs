@@ -17,7 +17,7 @@ public class EffectsSO : ScriptableObject
 
         myAudioSource.outputAudioMixerGroup = myGroup;
         myAudioSource.PlayOneShot(myAudio);
-        Instantiate(audioGameObject, Vector3.zero, Quaternion.identity);
-        Destroy(audioGameObject, 1.5f);
+        Destroy(audioGameObject, 0.5f);
+        
     }
 }
