@@ -79,7 +79,7 @@ public class BossController : MonoBehaviour
     {
         vida -= damage;
         GameObject particles1 = Instantiate(particles, transform.position, Quaternion.identity);
-        textovida.text = "VIDA BOSS: " + vida;
+        textovida.text = vida.ToString();
         Destroy(particles1, 1f);
         if (vida <= 0)
         {
