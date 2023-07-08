@@ -19,20 +19,22 @@ public class SimpleLinkList<T>
     Node Head { get; set; }
     int count = 0;
 
-    public void AddNodeAtStart(T value)
+    public void AddNodeAtStart(T value) // TIEMPO ASINTÓTICO O(1)
     {
-        Node newNode = new Node(value);
-        if (Head == null)
+        Node newNode = new Node(value); // 1
+        if (Head == null) // 1 + max(INT IF, INT ELSE) --> 1 + 9 = 10 
         {
-            Head = newNode;
-            count = count + 1;
+            Head = newNode; //2
+            count = count + 1; //2
+            //4
         }
         else if (Head != null)
         {
-            Node tmp = Head;
-            Head = newNode;
-            Head.Next = tmp;
-            count = count + 1;
+            Node tmp = Head; //3
+            Head = newNode; //2
+            Head.Next = tmp; //2
+            count = count + 1; //2
+            //9
 
         }
     }

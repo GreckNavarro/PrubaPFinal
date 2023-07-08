@@ -58,25 +58,26 @@ public class GeneradorEnemigos : MonoBehaviour
 
 
 
-    private void GenerarSpawns()
+    private void GenerarSpawns() // TIEMPO ASINTÓTICO O(N)
     {
-        anguloasumar = (360.0f / numerospawn);
+        anguloasumar = (360.0f / numerospawn); //3
 
 
-        Vector3 centro = player.transform.position;
+        Vector3 centro = player.transform.position; // 2
 
 
 
-        for (int i = 0; i < numerospawn; i++)
+        for (int i = 0; i < numerospawn; i++) // 1 + n(1 + Int +2) --> 1 + n(1+17+2) = 20n + 1 
         {
 
-            float currentangulo;
-            currentangulo = (anguloasumar * i) * Mathf.Deg2Rad;
-            GameObject p1 = Instantiate(spawner, (new Vector3(centro.x + Mathf.Cos(currentangulo) * radio, centro.y + Mathf.Sin(currentangulo) * radio)), transform.rotation);
-            spawners.AddNodeAtStart(p1);
+            float currentangulo; // 1
+            currentangulo = (anguloasumar * i) * Mathf.Deg2Rad; //3
+            GameObject p1 = Instantiate(spawner, (new Vector3(centro.x + Mathf.Cos(currentangulo) * radio, centro.y + Mathf.Sin(currentangulo) * radio)), transform.rotation); //3
+            spawners.AddNodeAtStart(p1); // 10
+            // 17
         }
-
-        Debug.Log(spawners.GetCount());
+        // 3 + 2 + 20n + 1 = 20n + 7
+        // O(n)
     }
     private IEnumerator GenerarEnemigos()
     {

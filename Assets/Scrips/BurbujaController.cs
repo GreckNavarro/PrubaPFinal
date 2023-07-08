@@ -14,9 +14,9 @@ public class BurbujaController : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
 
-    public void SetSound(AudioSource newsound)
+    public void SetSound(AudioSource newsound) // O(1)
     {
-        audiosource = newsound;
+        audiosource = newsound; //2
     }
     void Start()
     {
@@ -24,9 +24,9 @@ public class BurbujaController : MonoBehaviour
     }
 
     
-    public void ChangeVelocity(float angulo)
+    public void ChangeVelocity(float angulo) // O(1)
     {
-        rb.velocity = new Vector2(velocidad * Mathf.Cos(angulo), velocidad * Mathf.Sin(angulo));
+        rb.velocity = new Vector2(velocidad * Mathf.Cos(angulo), velocidad * Mathf.Sin(angulo)); //3
     }
 
 

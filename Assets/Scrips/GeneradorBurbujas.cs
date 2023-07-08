@@ -10,16 +10,17 @@ public class GeneradorBurbujas : MonoBehaviour
     {
        StartCoroutine(GenerarBurbujas());
     }
-    IEnumerator GenerarBurbujas()
+    IEnumerator GenerarBurbujas() // TIEMPO ASINTÓTICO O(N) --> Se llama indefinidamente en el Start()
     {
-        float currentangulo = Random.Range(65,115);
-        currentangulo = currentangulo * Mathf.Deg2Rad;
-        GameObject burbuja = Instantiate(prefabsBurbuja, transform.position, prefabsBurbuja.transform.rotation);
-        burbuja.GetComponent<BurbujaController>().ChangeVelocity(currentangulo);
-        burbuja.GetComponent<BurbujaController>().SetSound(audiopop);
+        float currentangulo = Random.Range(65,115); //3
+        currentangulo = currentangulo * Mathf.Deg2Rad; // 3
+        GameObject burbuja = Instantiate(prefabsBurbuja, transform.position, prefabsBurbuja.transform.rotation); //3
+        burbuja.GetComponent<BurbujaController>().ChangeVelocity(currentangulo); // O(1)
+        burbuja.GetComponent<BurbujaController>().SetSound(audiopop); //O(1)
 
-        yield return new WaitForSeconds(1);
-        StartCoroutine(GenerarBurbujas());
+        yield return new WaitForSeconds(1); // 2
+        StartCoroutine(GenerarBurbujas()); // O(n)
+
     }
 
 }

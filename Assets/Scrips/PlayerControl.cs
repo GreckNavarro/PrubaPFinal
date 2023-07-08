@@ -110,17 +110,17 @@ public class PlayerControl : MonoBehaviour
     }
 
 
-    IEnumerator ShootLaser()
+    IEnumerator ShootLaser() // TIEMPO ASINTÓTICO --> O(1)
     {
-        dispararRayo = false;
-        Vector3 endposition = ((Vector3)direccion * distance) + Disparador.position;
-        rayo.StartSoundSelection();
-        linerender.positionCount = 2;
-        linerender.SetPositions(new Vector3[] { Disparador.position, endposition});
-        yield return new WaitForSeconds(0.25f);
-        linerender.positionCount = 0;
-        yield return new WaitForSeconds(0.5f);
-        dispararRayo = true;
+        dispararRayo = false; //  2
+        Vector3 endposition = ((Vector3)direccion * distance) + Disparador.position; // 3
+        rayo.StartSoundSelection(); // O(1)
+        linerender.positionCount = 2; // 2
+        linerender.SetPositions(new Vector3[] { Disparador.position, endposition}); // 3
+        yield return new WaitForSeconds(0.25f); // 1
+        linerender.positionCount = 0; // 2
+        yield return new WaitForSeconds(0.5f); // 1
+        dispararRayo = true; // 2
     }
 
     private void RecibirDaño(int damage)
@@ -192,14 +192,15 @@ public class PlayerControl : MonoBehaviour
         }
     }
 
-    public void OnAimGamepad(InputAction.CallbackContext value)
+    public void OnAimGamepad(InputAction.CallbackContext value) //TIEMPO ASINTÓTICO --> O(1)
     {
-        Vector2 direccionmouse = value.ReadValue<Vector2>();
-        Debug.Log(direccionmouse);
-        mouseposition = direccionmouse;
-        float anguloRadianes = Mathf.Atan2(mouseposition.y, mouseposition.x);
-        angulosgrados = (Mathf.Rad2Deg * anguloRadianes - 90);
-        transform.rotation = Quaternion.Euler(0, 0, angulosgrados);
+        Vector2 direccionmouse = value.ReadValue<Vector2>(); // 3
+        mouseposition = direccionmouse; // 2
+        float anguloRadianes = Mathf.Atan2(mouseposition.y, mouseposition.x); //3
+        angulosgrados = (Mathf.Rad2Deg * anguloRadianes - 90); // 3 
+        transform.rotation = Quaternion.Euler(0, 0, angulosgrados); //2
+        // 13
+        // O(1)
     }
 
 

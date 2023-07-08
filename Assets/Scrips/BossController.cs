@@ -76,22 +76,24 @@ public class BossController : MonoBehaviour
         VectorToMove = destiny;
     }
 
-    public void RecibirDaño(int damage)
+    public void RecibirDaño(int damage) // TIEMPO ASINTÓTICO O(1)
     {
-        vida -= damage;
-        GameObject particles1 = Instantiate(particles, transform.position, Quaternion.identity);
-        textovida.text = vida.ToString();
-        Destroy(particles1, 1f);
-        if (vida <= 0)
+        vida -= damage; // 3
+        GameObject particles1 = Instantiate(particles, transform.position, Quaternion.identity); //3
+        textovida.text = vida.ToString(); //2
+        Destroy(particles1, 1f); //1
+        if (vida <= 0) // 1 + 10 + O(1)
         {
-            padre.SetActive(false);
-            score.SetBool(false);
-            transform.position = padre.transform.position;
-            advertencia.SetActive(false);
-            bossimage.SetActive(false);
-            score.HandleEnemyDestroy(puntajeextra);
-            sounds.ChangeAudioClip();
+            padre.SetActive(false); //2
+            score.SetBool(false); //2
+            transform.position = padre.transform.position; //2
+            advertencia.SetActive(false); //2
+            bossimage.SetActive(false); //2
+            score.HandleEnemyDestroy(puntajeextra); // O(1)
+            sounds.ChangeAudioClip(); // O(1)
         }
+        // 11 + O(1)
+        // O(1)
     }
 
     IEnumerator CanalizarAtaque()

@@ -56,23 +56,27 @@ public class ScoreManager : MonoBehaviour
     }
 
 
-    public void HandleEnemyDestroy(int bonuspuntaje)
+    public void HandleEnemyDestroy(int bonuspuntaje) // O(n)
     {
-        puntaje += bonuspuntaje;
-        enemigos += bonuspuntaje;
-        if (bossactived == false)
+        puntaje += bonuspuntaje; //3
+        enemigos += bonuspuntaje; //3
+        if (bossactived == false) // 1 + 7 = 8
         {
-            maximos += bonuspuntaje;
-            InvocarBoss();
+            maximos += bonuspuntaje; //3
+            InvocarBoss(); //4
         }
-        if (enemigos >= 500)
+        if (enemigos >= 500) //1 + 3 = 4
         {
-            NextEnemie?.Invoke();
-            enemigos = 0;
+            NextEnemie?.Invoke(); //1
+            enemigos = 0; //2
 
         }
-
+        
+        // 18
+        // O(n)
     }
+
+
 
     private void HandlePlayerDamaged(int damage)
     {
@@ -90,13 +94,12 @@ public class ScoreManager : MonoBehaviour
 
 
 
-    public void InvocarBoss()
+    public void InvocarBoss() // O(1)
     {
-        if (maximos >= 500)
+        if (maximos >= 500)// 1 +  3 = 4
         {
-            InvokeBoss?.Invoke();
-            Debug.Log(maximos);
-            maximos = 0;
+            InvokeBoss?.Invoke();//1
+            maximos = 0;//2
 
         }
        
