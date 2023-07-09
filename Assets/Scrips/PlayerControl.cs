@@ -40,6 +40,8 @@ public class PlayerControl : MonoBehaviour
     private float angulosgrados;
 
 
+
+
     public Vector2 DireccionShot()
     {
         direccion = mouseposition - transform.position;
@@ -73,6 +75,9 @@ public class PlayerControl : MonoBehaviour
         armas.Push(currentArma);
         Debug.Log(armas.Count());
         Disparador = transform.GetChild(0).GetChild(0);
+
+
+        
 
     }
     void Update()
@@ -202,6 +207,5 @@ public class PlayerControl : MonoBehaviour
         // 13
         // O(1)
     }
-
 
 }   
