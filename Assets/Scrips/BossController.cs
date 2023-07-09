@@ -90,7 +90,7 @@ public class BossController : MonoBehaviour
             advertencia.SetActive(false); //2
             bossimage.SetActive(false); //2
             score.HandleEnemyDestroy(puntajeextra); // O(1)
-            sounds.ChangeAudioClip(); // O(1)
+            sounds.ApagarBoss(); // O(1)
         }
         // 11 + O(1)
         // O(1)

@@ -11,16 +11,18 @@ public class ButtonsGameplay : MonoBehaviour
     [SerializeField] GameObject settings;
     public void Pause()
     {
+        player.GetComponent<PlayerControl>().GamePaused(true);
         Time.timeScale = 0;
         MenuPause.SetActive(true);
-        player.SetActive(false);
+
 
     }
     public void Reanudar()
     {
+        player.GetComponent<PlayerControl>().GamePaused(false);
         Time.timeScale = 1;
         MenuPause.SetActive(false);
-        player.SetActive(true);
+
     }
     public void GoMenu()
     {

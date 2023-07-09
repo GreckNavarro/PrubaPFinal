@@ -29,6 +29,8 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] EffectsSO disparo;
     [SerializeField] EffectsSO rayo;
 
+    private bool paused = false;
+
 
     [Header("InputSystem")]
     Vector2 rawInputMovement;
@@ -114,8 +116,12 @@ public class PlayerControl : MonoBehaviour
         myRB.velocity = rawInputMovement * velocity;
     }
 
+    public void GamePaused(bool pause)
+    {
+        paused = pause;
+    }
 
-    IEnumerator ShootLaser() // TIEMPO ASINTÓTICO --> O(1)
+    public IEnumerator ShootLaser() // TIEMPO ASINTÓTICO --> O(1)
     {
         dispararRayo = false; //  2
         Vector3 endposition = ((Vector3)direccion * distance) + Disparador.position; // 3
@@ -175,24 +181,28 @@ public class PlayerControl : MonoBehaviour
         }
 
     }
+
     public void OnFire(InputAction.CallbackContext value)
     {
         if (value.started)
         {
-            if (currentArma.GetProyectil() == 0)
+            if(paused != true)
             {
-                if (dispararRayo == true)
+                if (currentArma.GetProyectil() == 0)
+                {
+                    if (dispararRayo == true)
+                    {
+                        currentArma.Shoot();
+                        StartCoroutine(ShootLaser());
+                    }
+                }
+                else
                 {
                     currentArma.Shoot();
-                    StartCoroutine(ShootLaser());
+                    disparo.StartSoundSelection();
+                    GameObject burbujas = Instantiate(particlesburbujas, Disparador.transform.position, particlesburbujas.transform.rotation);
+                    Destroy(burbujas, 1.0f);
                 }
-            }
-            else
-            {
-                currentArma.Shoot();
-                disparo.StartSoundSelection();
-                GameObject burbujas = Instantiate(particlesburbujas, Disparador.transform.position, particlesburbujas.transform.rotation);
-                Destroy(burbujas, 1.0f);
             }
         }
     }

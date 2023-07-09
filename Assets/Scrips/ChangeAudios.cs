@@ -17,15 +17,12 @@ public class ChangeAudios : MonoBehaviour
 
     public void ChangeAudioClip() // TIEMPO ASINTÓTICO O(1)
     {
-        if (audios[0]) // 1 + 4 = 5
-        {
-            audiosource.clip = audios[1]; //3
-            audiosource.Play(); // 1
-        }
-        else if (audios[1]) // 1 + 4 = 5
-        {
-            audiosource.clip = audios[0]; //3
-            audiosource.Play(); // 1
-        }
+        audiosource.clip = audios[1]; //3
+        audiosource.Play(); // 1
+    }
+    public void ApagarBoss()
+    {
+        audiosource.clip = audios[0]; //3
+        audiosource.Play(); // 1
     }
 }
