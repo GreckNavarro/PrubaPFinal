@@ -6,6 +6,8 @@ public class Armas : MonoBehaviour
 {
     private SpriteRenderer sp;
     private Sprite currentsprite;
+
+
     [SerializeField] private PlayerControl player;
 
     private void Start()

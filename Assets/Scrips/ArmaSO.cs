@@ -7,7 +7,6 @@ using UnityEngine;
 public class ArmaSO : ScriptableObject
 {
     [SerializeField] Sprite sprite1;
-    [SerializeField] string mensaje;
     [SerializeField] int proyectiles;
     [SerializeField] int tiempo;
     [SerializeField] GameObject prefabBullet;

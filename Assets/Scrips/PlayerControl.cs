@@ -11,17 +11,21 @@ public class PlayerControl : MonoBehaviour
     Rigidbody2D myRB;
     [SerializeField] float velocity = 5;
     [SerializeField] int live;
+    private int distance = 10;
+    private float angulosgrados;
 
     private Vector3 target;
+    Vector2 direccion;
+
     public Pilas.StackP<ArmaSO> armas;
     [SerializeField] private ArmaSO currentArma;
     [SerializeField] private Armas armaenmano;
     private Transform Disparador;
     [SerializeField] LineRenderer linerender;
     [SerializeField] GameObject particlesburbujas;
-    Vector2 direccion;
-    private int distance = 10;
-    private bool dispararRayo;
+    
+    
+    
 
 
     public event Action<int> onPlayerDamaged;
@@ -29,6 +33,7 @@ public class PlayerControl : MonoBehaviour
     [SerializeField] EffectsSO disparo;
     [SerializeField] EffectsSO rayo;
 
+    private bool dispararRayo;
     private bool paused = false;
 
 
@@ -38,8 +43,8 @@ public class PlayerControl : MonoBehaviour
 
 
 
-    // Disparo
-    private float angulosgrados;
+    
+   
 
 
 

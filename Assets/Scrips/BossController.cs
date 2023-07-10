@@ -7,24 +7,32 @@ using TMPro;
 
 public class BossController : MonoBehaviour
 {
+
     private Vector2 VectorToMove;
-    [SerializeField] int speed;
-    [SerializeField] private int vida;
-    [SerializeField] private GameObject padre;
+
+
+    
     [SerializeField] ScoreManager score;
-    [SerializeField] GameObject prefabsSpores;
+  
     [SerializeField] float cantidadspores = 10;
     private float disparo = 0;
-    [SerializeField] GameObject particles;
     [SerializeField] int puntajeextra = 100;
+    [SerializeField] int speed;
+    [SerializeField] private int vida;
+    private int damage = 10;
+
+    [SerializeField] GameObject particles;
+    [SerializeField] GameObject prefabsSpores;
+    [SerializeField] private GameObject padre;
     [SerializeField] GameObject advertencia;
     [SerializeField] ChangeAudios sounds;
     [SerializeField] GameObject player;
-
-    [SerializeField] TMP_Text textovida;
     [SerializeField] GameObject bossimage;
 
-    private int damage = 10;
+    [SerializeField] TMP_Text textovida;
+    
+
+
 
     private void Awake()
     {
